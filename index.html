@@ -29,6 +29,7 @@
       --neon-emerald: #05f292;
       --neon-amber: #f59e0b;
       --neon-red: #ef4444;
+      --tg-blue: #229ed9;
 
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
@@ -97,7 +98,7 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      padding: 1rem 1.5rem;
+      padding: 0.85rem 1.5rem;
     }
 
     .header-container {
@@ -106,7 +107,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 1.5rem;
+      gap: 1.25rem;
       flex-wrap: wrap;
     }
 
@@ -147,7 +148,7 @@
     .time-widget {
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: 0.85rem;
       background: rgba(255, 255, 255, 0.04);
       padding: 0.45rem 1rem;
       border-radius: var(--radius-full);
@@ -160,6 +161,39 @@
       color: var(--neon-cyan);
       letter-spacing: 0.05em;
       font-variant-numeric: tabular-nums;
+    }
+
+    /* Telegram Status Badge */
+    .tg-status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 0.85rem;
+      background: rgba(34, 158, 217, 0.12);
+      border: 1px solid rgba(34, 158, 217, 0.35);
+      border-radius: var(--radius-full);
+      font-size: 0.78rem;
+      color: #7dd3fc;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+    .tg-status-badge:hover {
+      background: rgba(34, 158, 217, 0.22);
+      box-shadow: 0 0 12px rgba(34, 158, 217, 0.3);
+    }
+    .tg-pulse-dot {
+      width: 8px;
+      height: 8px;
+      background: #10b981;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #10b981;
+      animation: pulseAnim 2s infinite;
+    }
+    @keyframes pulseAnim {
+      0% { transform: scale(0.95); opacity: 0.8; }
+      50% { transform: scale(1.3); opacity: 1; }
+      100% { transform: scale(0.95); opacity: 0.8; }
     }
 
     .header-actions {
@@ -270,9 +304,7 @@
       stroke-width: 2.2;
     }
 
-    /* ==========================================================================
-       CONTAINER & SECTIONS
-       ========================================================================== */
+    /* CONTAINER & SECTIONS */
     .main-content {
       max-width: 1380px;
       width: 100%;
@@ -309,9 +341,7 @@
       border-color: rgba(255, 255, 255, 0.14);
     }
 
-    /* ==========================================================================
-       SECTION 1: DASHBOARD (BOSHQARUV PANELI)
-       ========================================================================== */
+    /* DASHBOARD */
     .dashboard-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -380,7 +410,6 @@
       font-style: italic;
       color: #e2e8f0;
       font-size: 1.05rem;
-      position: relative;
     }
 
     .quote-author {
@@ -390,9 +419,7 @@
       font-weight: 600;
     }
 
-    /* ==========================================================================
-       SECTION 2: 10-YILLIK STRATEGIYA (VISION BOARD)
-       ========================================================================== */
+    /* 10-YEAR GOALS */
     .section-header {
       display: flex;
       justify-content: space-between;
@@ -465,7 +492,6 @@
       justify-content: space-between;
       gap: 1rem;
       transition: var(--transition-smooth);
-      position: relative;
     }
 
     .goal-card:hover {
@@ -606,9 +632,7 @@
       background: rgba(239, 68, 68, 0.15);
     }
 
-    /* ==========================================================================
-       SECTION 3: KUN TARTIBI (06:00 - 23:00)
-       ========================================================================== */
+    /* KUN TARTIBI (SCHEDULE) */
     .schedule-control-bar {
       display: flex;
       justify-content: space-between;
@@ -772,9 +796,7 @@
       color: #fff;
     }
 
-    /* ==========================================================================
-       SECTION 4: VAZIFALAR & O'QISH (TO-DO & BOOK TRACKER)
-       ========================================================================== */
+    /* VAZIFALAR & O'QISH */
     .planner-split-grid {
       display: grid;
       grid-template-columns: 1.15fr 1fr;
@@ -861,7 +883,7 @@
     .priority-high { background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.35); }
     .priority-normal { background: rgba(59, 130, 246, 0.2); color: #93c5fd; border: 1px solid rgba(59, 130, 246, 0.35); }
 
-    /* Books / Reading tracker */
+    /* Books */
     .books-container {
       display: flex;
       flex-direction: column;
@@ -907,9 +929,7 @@
       margin-bottom: 0.4rem;
     }
 
-    /* ==========================================================================
-       MODAL OYNALAR (Popups)
-       ========================================================================== */
+    /* MODAL OYNALAR */
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -1007,7 +1027,7 @@
       margin-top: 1.8rem;
     }
 
-    /* Toast notification */
+    /* TOAST */
     .toast-container {
       position: fixed;
       bottom: 24px;
@@ -1031,7 +1051,7 @@
       align-items: center;
       gap: 0.65rem;
       animation: slideInRight 0.3s ease;
-      max-width: 340px;
+      max-width: 360px;
     }
 
     @keyframes slideInRight {
@@ -1039,7 +1059,6 @@
       to { transform: translateX(0); opacity: 1; }
     }
 
-    /* Empty state */
     .empty-state {
       text-align: center;
       padding: 3rem 1.5rem;
@@ -1052,7 +1071,6 @@
       margin-bottom: 0.75rem;
     }
 
-    /* Responsive adjustments */
     @media (max-width: 768px) {
       .header-container {
         flex-direction: column;
@@ -1063,6 +1081,7 @@
       }
       .header-actions {
         justify-content: space-between;
+        flex-wrap: wrap;
       }
       .tabs-nav {
         padding: 0.25rem;
@@ -1097,7 +1116,7 @@
         <div class="logo-badge">10X</div>
         <div class="brand-info">
           <h1>HAYOT STRATEGIYASI</h1>
-          <p>10 Yillik Vision &middot; Kun Tartibi &middot; Rivojlanish</p>
+          <p>10 Yillik Vision &middot; Kun Tartibi &middot; Telegram Bot</p>
         </div>
       </div>
 
@@ -1108,6 +1127,13 @@
       </div>
 
       <div class="header-actions">
+        <!-- Telegram status tugmasi -->
+        <button class="tg-status-badge" onclick="openTelegramModal()" title="Telegram Bot sozlamalari">
+          <span class="tg-pulse-dot"></span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+          <span>Telegram: Faol</span>
+        </button>
+
         <button class="btn btn-glass btn-sm" onclick="exportData()" title="Zaxira nusxasini yuklab olish">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
           Eksport
@@ -1129,7 +1155,7 @@
         <span>Boshqaruv Paneli</span>
       </button>
       <button class="tab-btn" data-tab="tab-goals" onclick="switchTab('tab-goals')">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="2" r="2"></circle></svg>
         <span>10 Yillik Maqsadlar</span>
       </button>
       <button class="tab-btn" data-tab="tab-schedule" onclick="switchTab('tab-schedule')">
@@ -1143,14 +1169,11 @@
     </nav>
   </div>
 
-  <!-- MAIN CONTENT CONTAINER -->
+  <!-- MAIN CONTENT -->
   <main class="main-content">
 
-    <!-- ====================================================================
-         TAB 1: BOSHQARUV PANELI (DASHBOARD)
-         ==================================================================== -->
+    <!-- TAB 1: BOSHQARUV PANELI -->
     <section id="tab-dashboard" class="view-section active">
-      <!-- Motivatsion iqtibos -->
       <div class="quote-banner">
         <div>
           <div class="quote-text" id="quoteDisplay">"Kelajak bugun nima qilayotganingizga bog'liq."</div>
@@ -1161,7 +1184,6 @@
         </button>
       </div>
 
-      <!-- Statistika kartalari -->
       <div class="dashboard-grid">
         <div class="glass-card stat-card" style="--stat-color: var(--neon-cyan);">
           <div class="stat-icon-wrap">
@@ -1204,9 +1226,7 @@
         </div>
       </div>
 
-      <!-- Tezkor umumiy ko'rinish panellari -->
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem;">
-        <!-- Joriy soatdagi vazifa -->
         <div class="glass-card">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
             <h3 style="font-size: 1.1rem; font-weight: 700; color: #fff;">⏰ Ayni Vaqtdagi Vazifa</h3>
@@ -1215,32 +1235,28 @@
           <p id="currentSlotTaskText" style="font-size: 1rem; color: var(--text-muted); min-height: 48px;">
             Hozircha rejalashtirilgan vazifa yo'q.
           </p>
-          <div style="margin-top: 1rem;">
+          <div style="margin-top: 1rem; display: flex; gap: 0.5rem;">
             <button class="btn btn-glass btn-sm" onclick="switchTab('tab-schedule')">Kun tartibiga o'tish &rarr;</button>
+            <button class="btn btn-glass btn-sm" onclick="testTelegramNotification()">🤖 Telegram Test</button>
           </div>
         </div>
 
-        <!-- 10 yillik eng muhim maqsadlar mini ko'rinishi -->
         <div class="glass-card">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
             <h3 style="font-size: 1.1rem; font-weight: 700; color: #fff;">🎯 Asosiy Strategik Maqsadlar</h3>
             <button class="btn btn-glass btn-sm" onclick="openGoalModal()">+ Yangi</button>
           </div>
-          <div id="dashTopGoalsList" style="display: flex; flex-direction: column; gap: 0.75rem;">
-            <!-- Dinamik generatsiya qilinadi -->
-          </div>
+          <div id="dashTopGoalsList" style="display: flex; flex-direction: column; gap: 0.75rem;"></div>
         </div>
       </div>
     </section>
 
-    <!-- ====================================================================
-         TAB 2: 10 YILLIK MAQSADLAR (VISION BOARD)
-         ==================================================================== -->
+    <!-- TAB 2: 10 YILLIK MAQSADLAR -->
     <section id="tab-goals" class="view-section">
       <div class="section-header">
         <div>
           <h2 class="section-title">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--neon-cyan)" stroke-width="2.2"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--neon-cyan)" stroke-width="2.2"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="2" r="2"></circle></svg>
             10 Yillik Strategik Reja (2026 &mdash; 2035)
           </h2>
           <p class="section-subtitle">Kelgusi o'n yillik hayotingizni shakllantiruvchi buyuk maqsadlaringiz</p>
@@ -1251,7 +1267,6 @@
         </button>
       </div>
 
-      <!-- Yillar va kategoriyalar bo'yicha filterlar -->
       <div class="filter-bar">
         <button class="filter-chip active" onclick="filterGoals('all', this)">Barchasi</button>
         <button class="filter-chip" onclick="filterGoals('2026', this)">2026 (1-yil)</button>
@@ -1266,15 +1281,10 @@
         <button class="filter-chip" onclick="filterGoals('cat-shaxsiy', this)">Shaxsiy</button>
       </div>
 
-      <!-- Maqsadlar ro'yxati kartalari -->
-      <div class="goals-grid" id="goalsGridContainer">
-        <!-- JS orqali to'ldiriladi -->
-      </div>
+      <div class="goals-grid" id="goalsGridContainer"></div>
     </section>
 
-    <!-- ====================================================================
-         TAB 3: KUN TARTIBI (06:00 - 23:00)
-         ==================================================================== -->
+    <!-- TAB 3: KUN TARTIBI (06:00 - 23:00) -->
     <section id="tab-schedule" class="view-section">
       <div class="section-header">
         <div>
@@ -1282,7 +1292,7 @@
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--neon-green)" stroke-width="2.2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
             Kunlik Kun Tartibi (06:00 &mdash; 23:00)
           </h2>
-          <p class="section-subtitle">Intizom &mdash; bu reja va amal o'rtasidagi ko'prikdir</p>
+          <p class="section-subtitle">Har bir belgilangan vazifa to'g'ridan-to'g'ri Telegram botingizga yuboriladi</p>
         </div>
         <div style="display:flex; gap: 0.5rem; flex-wrap: wrap;">
           <button class="btn btn-glass btn-sm" onclick="loadDefaultScheduleRoutine()">
@@ -1296,7 +1306,6 @@
         </div>
       </div>
 
-      <!-- Kunlik bajarilish ko'rsatkichi -->
       <div class="schedule-control-bar">
         <div class="schedule-progress-box">
           <div style="font-weight: 700; font-size: 0.88rem; color: #fff; min-width: 140px;">
@@ -1311,19 +1320,12 @@
         </div>
       </div>
 
-      <!-- Soatlik bloklar konteyneri -->
-      <div class="schedule-timeline" id="scheduleTimelineContainer">
-        <!-- JS orqali generatsiya qilinadi -->
-      </div>
+      <div class="schedule-timeline" id="scheduleTimelineContainer"></div>
     </section>
 
-    <!-- ====================================================================
-         TAB 4: VAZIFALAR VA O'QISH REJASI (TO-DO & STUDY)
-         ==================================================================== -->
+    <!-- TAB 4: VAZIFALAR & O'QISH -->
     <section id="tab-tasks" class="view-section">
       <div class="planner-split-grid">
-        
-        <!-- Vazifalar (To-Do) -->
         <div class="glass-card">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
             <h3 style="font-size: 1.2rem; font-weight: 800; color: #fff; display:flex; align-items:center; gap:0.5rem;">
@@ -1342,12 +1344,9 @@
             <button type="submit" class="btn btn-neon-primary btn-sm">+ Qo'shish</button>
           </form>
 
-          <div class="todo-list" id="todoListContainer">
-            <!-- JS orqali to'ldiriladi -->
-          </div>
+          <div class="todo-list" id="todoListContainer"></div>
         </div>
 
-        <!-- Kitobxonlik & O'qish rejasi -->
         <div class="glass-card">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
             <h3 style="font-size: 1.2rem; font-weight: 800; color: #fff; display:flex; align-items:center; gap:0.5rem;">
@@ -1361,19 +1360,14 @@
             Ilm &mdash; eng foydali investitsiya. Sahifalar sonini qayd etib boring.
           </p>
 
-          <div class="books-container" id="booksContainer">
-            <!-- JS orqali to'ldiriladi -->
-          </div>
+          <div class="books-container" id="booksContainer"></div>
         </div>
-
       </div>
     </section>
 
   </main>
 
-  <!-- ====================================================================
-       MODAL 1: MAQSAD QO'SHISH / TAHRIRLASH
-       ==================================================================== -->
+  <!-- MODAL: GOAL -->
   <div class="modal-overlay" id="goalModal">
     <div class="modal-box">
       <h3 class="modal-title" id="goalModalTitle">Yangi 10 Yillik Maqsad</h3>
@@ -1434,9 +1428,7 @@
     </div>
   </div>
 
-  <!-- ====================================================================
-       MODAL 2: KITOB QO'SHISH / TAHRIRLASH
-       ==================================================================== -->
+  <!-- MODAL: BOOK -->
   <div class="modal-overlay" id="bookModal">
     <div class="modal-box">
       <h3 class="modal-title">Kitob Rejasini Qo'shish</h3>
@@ -1472,65 +1464,108 @@
     </div>
   </div>
 
-  <!-- TOAST CONTAINER -->
+  <!-- MODAL: TELEGRAM SOZLAMALARI -->
+  <div class="modal-overlay" id="telegramModal">
+    <div class="modal-box">
+      <h3 class="modal-title">Telegram Bot Sozlamalari</h3>
+      <p class="modal-subtitle">Barcha sayt harakatlari to'g'ridan-to'g'ri Telegramingizga yuboriladi</p>
+
+      <div class="form-group">
+        <label class="form-label">Bot Token</label>
+        <input type="text" id="tgTokenInput" class="form-control" value="9160754216:AAF9UUx9rwWuOk7C420g9f0MHTO_anCdVvY">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Chat ID</label>
+        <input type="text" id="tgChatIdInput" class="form-control" value="8767361789">
+      </div>
+
+      <div style="background: rgba(34, 158, 217, 0.1); border: 1px solid rgba(34, 158, 217, 0.3); padding: 0.85rem; border-radius: 8px; margin-bottom: 1.2rem; font-size: 0.82rem; color: #bae6fd;">
+        Bot: <b>@KunlikReja_botBot</b><br>
+        Holat: <b>Faol va ulangan ✅</b>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="btn btn-glass" onclick="closeTelegramModal()">Yopish</button>
+        <button type="button" class="btn btn-glass" onclick="testTelegramNotification()">Sinov Xabari Yuborish</button>
+        <button type="button" class="btn btn-neon-primary" onclick="saveTelegramSettings()">Saqlash</button>
+      </div>
+    </div>
+  </div>
+
   <div class="toast-container" id="toastContainer"></div>
 
-  <!-- ====================================================================
-       JAVASCRIPT DASTUR KODI
-       ==================================================================== -->
+  <!-- JAVASCRIPT -->
   <script>
     /* ======================================================================
-       DEFAULT NAMUNAVIY MA'LUMOTLAR (Initial Seed Data)
+       TELEGRAM BOT INTEGRATSIYASI
+       ====================================================================== */
+    let TG_CONFIG = loadData("stratix_tg_config", {
+      token: "9160754216:AAF9UUx9rwWuOk7C420g9f0MHTO_anCdVvY",
+      chatId: "8767361789",
+      enabled: true
+    });
+
+    async function sendTelegramNotification(text) {
+      if (!TG_CONFIG.enabled || !TG_CONFIG.token || !TG_CONFIG.chatId) return;
+
+      const url = `https://api.telegram.org/bot${TG_CONFIG.token}/sendMessage`;
+      try {
+        const response = await fetch(url, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            chat_id: TG_CONFIG.chatId,
+            text: text,
+            parse_mode: "HTML"
+          })
+        });
+        const data = await response.json();
+        if (!data.ok) {
+          console.warn("Telegram API xatosi:", data.description);
+        }
+      } catch (err) {
+        console.warn("Telegramga xabar yetkazishda xatolik:", err);
+      }
+    }
+
+    function openTelegramModal() {
+      document.getElementById("tgTokenInput").value = TG_CONFIG.token;
+      document.getElementById("tgChatIdInput").value = TG_CONFIG.chatId;
+      document.getElementById("telegramModal").classList.add("active");
+    }
+
+    function closeTelegramModal() {
+      document.getElementById("telegramModal").classList.remove("active");
+    }
+
+    function saveTelegramSettings() {
+      TG_CONFIG.token = document.getElementById("tgTokenInput").value.trim();
+      TG_CONFIG.chatId = document.getElementById("tgChatIdInput").value.trim();
+      saveData("stratix_tg_config", TG_CONFIG);
+      closeTelegramModal();
+      showToast("Telegram sozlamalari saqlandi! ✅");
+    }
+
+    async function testTelegramNotification() {
+      showToast("Telegramga sinov xabari yuborilmoqda...");
+      await sendTelegramNotification(
+        `🔔 <b>Hayot Strategiyasi: Sinov Xabari</b>\n\n` +
+        `Bot va Sayt muvaffaqiyatli bog'langan! Vaqt: <i>${new Date().toLocaleTimeString()}</i>`
+      );
+      showToast("Sinov xabari yuborildi! Telegramingizni tekshiring 📱");
+    }
+
+    /* ======================================================================
+       DEFAULT MA'LUMOTLAR
        ====================================================================== */
     const DEFAULT_GOALS = [
-      {
-        id: "goal_1",
-        year: "2026",
-        title: "Dasturlash va Sun'iy Intellekt bo'yicha kuchli mutaxassis bo'lish",
-        category: "karyera",
-        progress: 35,
-        notes: "Python, zamonaviy LLM texnologiyalari va arxitekturani mukammal o'rganish."
-      },
-      {
-        id: "goal_2",
-        year: "2026",
-        title: "Yil davomida 24 ta foydali kitob mutolaa qilish",
-        category: "talim",
-        progress: 50,
-        notes: "Har oy kamida 2 ta strategik va psixologik adabiyot o'qib tugatish."
-      },
-      {
-        id: "goal_3",
-        year: "2027",
-        title: "Ingliz tilidan C1 darajasiga chiqish va xalqaro loyihalarga kirish",
-        category: "talim",
-        progress: 20,
-        notes: "IELTS 7.5+ yoki kundalik ravon so'zlashuv darajasi."
-      },
-      {
-        id: "goal_4",
-        year: "2028",
-        title: "Shaxsiy startup / raqamli mahsulotni ishga tushirish",
-        category: "moliya",
-        progress: 10,
-        notes: "Bozor talabidagi SaaS yoki AI xizmat yaratish."
-      },
-      {
-        id: "goal_5",
-        year: "2030",
-        title: "Moliyaviy erkinlik va passiv daromad manbalarini yaratish",
-        category: "moliya",
-        progress: 15,
-        notes: "Investitsiyalar portfeli va ko'chmas mulk aktivlarini shakllantirish."
-      },
-      {
-        id: "goal_6",
-        year: "2035",
-        title: "Sohada yetakchi ekspert va yoshlar ustozi bo'lish",
-        category: "shaxsiy",
-        progress: 5,
-        notes: "Katta ta'lim akademiyasi yoki venchur fondiga asos solish."
-      }
+      { id: "goal_1", year: "2026", title: "Dasturlash va Sun'iy Intellekt bo'yicha kuchli mutaxassis bo'lish", category: "karyera", progress: 35, notes: "Python, zamonaviy LLM texnologiyalari va tizim arxitekturasini o'rganish." },
+      { id: "goal_2", year: "2026", title: "Yil davomida 24 ta foydali kitob mutolaa qilish", category: "talim", progress: 50, notes: "Har oy kamida 2 ta strategik va psixologik kitob." },
+      { id: "goal_3", year: "2027", title: "Ingliz tilidan C1 darajasiga chiqish va xalqaro loyihalarga kirish", category: "talim", progress: 20, notes: "IELTS 7.5+ yoki kundalik ravon so'zlashuv." },
+      { id: "goal_4", year: "2028", title: "Shaxsiy startup / raqamli mahsulotni ishga tushirish", category: "moliya", progress: 10, notes: "Bozor talabidagi SaaS xizmatini yo'lga qo'yish." },
+      { id: "goal_5", year: "2030", title: "Moliyaviy erkinlik va passiv daromad aktivlarini yaratish", category: "moliya", progress: 15, notes: "Investitsiyalar portfeli va dividendlar." },
+      { id: "goal_6", year: "2035", title: "Sohada yetakchi mentor va investor bo'lish", category: "shaxsiy", progress: 5, notes: "Katta ta'lim akademiyasi yoki fondga asos solish." }
     ];
 
     const DEFAULT_SCHEDULE = {
@@ -1541,7 +1576,7 @@
       "10:00 - 11:00": { task: "Asosiy loyiha ustida diqqat bilan ishlash", completed: false, category: "Ish" },
       "11:00 - 12:00": { task: "Kod yozish yoki vazifalarni bajarish - 2-blok", completed: false, category: "Ish" },
       "12:00 - 13:00": { task: "Tushlik, toza havoda qisqa sayr va dam olish", completed: false, category: "Dam olish" },
-      "13:00 - 14:00": { task: "Xabarlar, yozishmalar va yengil ma'muriy ishlar", completed: false, category: "Ish" },
+      "13:00 - 14:00": { task: "Xabarlar, yozishmalar va yengil ishlar", completed: false, category: "Ish" },
       "14:00 - 15:00": { task: "Ta'lim: yangi texnologiya yoki kurslarni o'rganish", completed: false, category: "O'qish" },
       "15:00 - 16:00": { task: "Amaliy mashg'ulot va muammolarni yechish", completed: false, category: "O'qish" },
       "16:00 - 17:00": { task: "Loyihaning test sinovlari va natijalarni tekshirish", completed: false, category: "Ish" },
@@ -1573,15 +1608,11 @@
       { text: "Vaqtingiz cheklangan, uni boshqalarning hayotini yashashga sarflamang.", author: "Stiv Jobs" }
     ];
 
-    /* ======================================================================
-       STORAGE FUNCTIONS
-       ====================================================================== */
     function loadData(key, fallback) {
       try {
         const item = localStorage.getItem(key);
         return item ? JSON.parse(item) : fallback;
       } catch (e) {
-        console.error("Storage yuklashda xatolik:", e);
         return fallback;
       }
     }
@@ -1590,12 +1621,10 @@
       try {
         localStorage.setItem(key, JSON.stringify(val));
       } catch (e) {
-        console.error("Storage saqlashda xatolik:", e);
         showToast("Ma'lumotni saqlab bo'lmadi!");
       }
     }
 
-    // STATE
     let goals = loadData("stratix_goals_v2", DEFAULT_GOALS);
     let schedule = loadData("stratix_schedule_v2", DEFAULT_SCHEDULE);
     let todos = loadData("stratix_todos_v2", DEFAULT_TODOS);
@@ -1603,14 +1632,11 @@
     let currentGoalFilter = "all";
     let quoteIndex = 0;
 
-    /* ======================================================================
-       INITIALIZATION
-       ====================================================================== */
     window.addEventListener("DOMContentLoaded", () => {
       startClock();
       renderAll();
       highlightCurrentTimeSlot();
-      setInterval(highlightCurrentTimeSlot, 60000); // Har daqiqada tekshirib turadi
+      setInterval(highlightCurrentTimeSlot, 60000);
     });
 
     function renderAll() {
@@ -1621,21 +1647,11 @@
       updateDashboardStats();
     }
 
-    /* ======================================================================
-       TIME & CLOCK & QUOTES
-       ====================================================================== */
     function startClock() {
       const timeEl = document.getElementById("currentTimeDisplay");
       const dateEl = document.getElementById("currentDateDisplay");
-
-      const monthsUz = [
-        "Yanvar", "Fevral", "Mart", "Aprel", "May", "Iyun",
-        "Iyul", "Avgust", "Sentabr", "Oktabr", "Noyabr", "Dekabr"
-      ];
-      const daysUz = [
-        "Yakshanba", "Dushanba", "Seshanba", "Chorshanba",
-        "Payshanba", "Juma", "Shanba"
-      ];
+      const monthsUz = ["Yanvar", "Fevral", "Mart", "Aprel", "May", "Iyun", "Iyul", "Avgust", "Sentabr", "Oktabr", "Noyabr", "Dekabr"];
+      const daysUz = ["Yakshanba", "Dushanba", "Seshanba", "Chorshanba", "Payshanba", "Juma", "Shanba"];
 
       function tick() {
         const now = new Date();
@@ -1643,7 +1659,6 @@
         const m = monthsUz[now.getMonth()];
         const y = now.getFullYear();
         const day = daysUz[now.getDay()];
-
         const hh = String(now.getHours()).padStart(2, '0');
         const mm = String(now.getMinutes()).padStart(2, '0');
         const ss = String(now.getSeconds()).padStart(2, '0');
@@ -1662,26 +1677,18 @@
       document.getElementById("quoteAuthor").innerHTML = `&mdash; ${q.author}`;
     }
 
-    /* ======================================================================
-       TABS NAVIGATION
-       ====================================================================== */
     function switchTab(tabId) {
       document.querySelectorAll(".tab-btn").forEach(btn => {
         btn.classList.toggle("active", btn.dataset.tab === tabId);
       });
-
       document.querySelectorAll(".view-section").forEach(sec => {
         sec.classList.toggle("active", sec.id === tabId);
       });
-
-      // Agar boshqaruv paneliga o'tsa statistikani qayta sanaymiz
-      if (tabId === "tab-dashboard") {
-        updateDashboardStats();
-      }
+      if (tabId === "tab-dashboard") updateDashboardStats();
     }
 
     /* ======================================================================
-       10 YILLIK MAQSADLAR FUNKSIYALARI
+       10 YILLIK MAQSADLAR
        ====================================================================== */
     function renderGoals() {
       const container = document.getElementById("goalsGridContainer");
@@ -1710,13 +1717,7 @@
 
       filtered.forEach(goal => {
         const catClass = "cat-" + (goal.category || "karyera");
-        const catLabels = {
-          karyera: "Karyera",
-          talim: "Ta'lim",
-          moliya: "Moliya",
-          shaxsiy: "Shaxsiy",
-          salomatlik: "Sog'liq"
-        };
+        const catLabels = { karyera: "Karyera", talim: "Ta'lim", moliya: "Moliya", shaxsiy: "Shaxsiy", salomatlik: "Sog'liq" };
         const catText = catLabels[goal.category] || goal.category;
         const isDone = goal.progress >= 100;
 
@@ -1804,24 +1805,28 @@
       if (!title) return;
 
       if (id) {
-        // Tahrirlash
         const index = goals.findIndex(g => g.id === id);
         if (index !== -1) {
           goals[index] = { ...goals[index], title, year, category, progress, notes };
           showToast("Maqsad muvaffaqiyatli tahrirlandi!");
+          sendTelegramNotification(
+            `✏️ <b>Strategik Maqsad Tahrirlandi:</b>\n\n` +
+            `🎯 <b>${title}</b>\n` +
+            `📅 Yil: <b>${year}</b> | Kategoriya: <b>${category}</b>\n` +
+            `📊 Bajarilish: <b>${progress}%</b>`
+          );
         }
       } else {
-        // Yangi qo'shish
-        const newGoal = {
-          id: "goal_" + Date.now(),
-          title,
-          year,
-          category,
-          progress,
-          notes
-        };
+        const newGoal = { id: "goal_" + Date.now(), title, year, category, progress, notes };
         goals.unshift(newGoal);
         showToast("Yangi strategik maqsad qo'shildi! 🚀");
+        sendTelegramNotification(
+          `🎯 <b>Yangi 10 Yillik Maqsad Qo'shildi!</b>\n\n` +
+          `📌 <b>${title}</b>\n` +
+          `📅 Reja yili: <b>${year}</b>\n` +
+          `📂 Yo'nalish: <b>${category}</b>\n` +
+          `📊 Boshlang'ich foiz: <b>${progress}%</b>`
+        );
       }
 
       saveData("stratix_goals_v2", goals);
@@ -1836,8 +1841,12 @@
     }
 
     function deleteGoal(id) {
+      const g = goals.find(item => item.id === id);
       if (confirm("Haqiqatan ham ushbu maqsadni o'chirmoqchimisiz?")) {
-        goals = goals.filter(g => g.id !== id);
+        if (g) {
+          sendTelegramNotification(`🗑 <b>Maqsad o'chirildi:</b> "${g.title}" (${g.year}-yil)`);
+        }
+        goals = goals.filter(item => item.id !== id);
         saveData("stratix_goals_v2", goals);
         renderGoals();
         updateDashboardStats();
@@ -1848,17 +1857,29 @@
     function adjustGoalProgress(id, delta) {
       const g = goals.find(item => item.id === id);
       if (!g) return;
+      const oldProgress = g.progress;
       g.progress = Math.min(100, Math.max(0, g.progress + delta));
       saveData("stratix_goals_v2", goals);
       renderGoals();
       updateDashboardStats();
-      if (g.progress === 100) {
+
+      if (g.progress === 100 && oldProgress < 100) {
         showToast(`Tabriklaymiz! "${g.title}" maqsadi 100% bajarildi! 🎉`);
+        sendTelegramNotification(
+          `🏆 <b>G'ALABA! 10 YILLIK MAQSAD 100% BAJARILDI!</b>\n\n` +
+          `🎯 <b>${g.title}</b> (${g.year}-yil)\n` +
+          `🎉 Reja to'liq zabt etildi!`
+        );
+      } else if (oldProgress !== g.progress) {
+        sendTelegramNotification(
+          `📈 <b>Maqsad Progressi:</b> "${g.title}"\n` +
+          `Foiz: <b>${oldProgress}% &rarr; ${g.progress}%</b>`
+        );
       }
     }
 
     /* ======================================================================
-       KUN TARTIBI (06:00 - 23:00) FUNKSIYALARI
+       KUN TARTIBI (06:00 - 23:00)
        ====================================================================== */
     function renderSchedule() {
       const container = document.getElementById("scheduleTimelineContainer");
@@ -1900,7 +1921,6 @@
         container.appendChild(div);
       });
 
-      // Foizni yangilash
       const percent = keys.length ? Math.round((completedCount / keys.length) * 100) : 0;
       document.getElementById("scheduleProgressBar").style.width = percent + "%";
       document.getElementById("scheduleProgressNum").textContent = percent + "%";
@@ -1915,8 +1935,25 @@
         saveData("stratix_schedule_v2", schedule);
         renderSchedule();
         updateDashboardStats();
+
+        const currentTask = schedule[slotTime].task || "Belgilangan vazifa";
+        const keys = Object.keys(schedule);
+        let completedCount = 0;
+        keys.forEach(k => { if (schedule[k].completed) completedCount++; });
+        const totalPercent = Math.round((completedCount / keys.length) * 100);
+
         if (isChecked) {
           showToast(`Vaqt bloki (${slotTime}) bajarildi! 👍`);
+          sendTelegramNotification(
+            `✅ <b>Kun Tartibi Bajarildi!</b>\n\n` +
+            `⏰ Vaqt: <b>${slotTime}</b>\n` +
+            `📌 Vazifa: <b>${currentTask}</b>\n` +
+            `📊 Bugungi umumiy intizom: <b>${totalPercent}%</b> (${completedCount}/${keys.length} soat)`
+          );
+        } else {
+          sendTelegramNotification(
+            `↩️ <b>Kun tartibi belgisi bekor qilindi:</b> [${slotTime}] ${currentTask}`
+          );
         }
       }
     }
@@ -1926,6 +1963,9 @@
         schedule[slotTime].task = text.trim();
         saveData("stratix_schedule_v2", schedule);
         updateDashboardStats();
+        sendTelegramNotification(
+          `📝 <b>Kun tartibi yangilandi:</b>\n⏰ <b>${slotTime}</b>: "${text.trim()}"`
+        );
       }
     }
 
@@ -1937,14 +1977,16 @@
     }
 
     function resetDayChecks() {
-      if (confirm("Kunlik barcha 'bajarildi' belgilarini yangi kunga o'tkazishni (tozalashni) xohlaysizmi? Vazifalar saqlanib qoladi.")) {
-        Object.keys(schedule).forEach(k => {
-          schedule[k].completed = false;
-        });
+      if (confirm("Kunlik barcha 'bajarildi' belgilarini yangi kunga o'tkazishni (tozalashni) xohlaysizmi? Vazifalar matni saqlanib qoladi.")) {
+        Object.keys(schedule).forEach(k => { schedule[k].completed = false; });
         saveData("stratix_schedule_v2", schedule);
         renderSchedule();
         updateDashboardStats();
         showToast("Barcha belgilar qayta tiklandi. Yangi kun muborak bo'lsin!");
+        sendTelegramNotification(
+          `🌅 <b>Yangi Kun Boshlandi!</b>\n\n` +
+          `Kun tartibi soat 06:00 dan boshlab qayta tiklandi. Bugungi rejalaringizda omad tilaymiz!`
+        );
       }
     }
 
@@ -1955,13 +1997,13 @@
         renderSchedule();
         updateDashboardStats();
         showToast("Namunaviy tartib yuklandi!");
+        sendTelegramNotification(`📋 <b>Namunaviy kun tartibi yuklandi.</b>`);
       }
     }
 
     function highlightCurrentTimeSlot() {
       const now = new Date();
       const currentHour = now.getHours();
-
       let matchedSlot = null;
 
       document.querySelectorAll(".timeline-item").forEach(item => {
@@ -1979,7 +2021,6 @@
         }
       });
 
-      // Dashboarddagi ayni vaqt blokini yangilash
       const badge = document.getElementById("currentSlotTimeBadge");
       const text = document.getElementById("currentSlotTaskText");
       if (matchedSlot && schedule[matchedSlot]) {
@@ -1992,7 +2033,7 @@
     }
 
     /* ======================================================================
-       VAZIFALAR (TO-DO) FUNKSIYALARI
+       VAZIFALAR (TO-DO)
        ====================================================================== */
     function renderTodos() {
       const container = document.getElementById("todoListContainer");
@@ -2003,11 +2044,7 @@
       document.getElementById("todoBadgeCounter").textContent = `${remaining} ta qoldi`;
 
       if (todos.length === 0) {
-        container.innerHTML = `
-          <div style="text-align:center; padding: 2rem; color:var(--text-muted); font-size:0.85rem;">
-            Vazifalar ro'yxati bo'sh. Yuqoridan qo'shishingiz mumkin.
-          </div>
-        `;
+        container.innerHTML = `<div style="text-align:center; padding: 2rem; color:var(--text-muted); font-size:0.85rem;">Vazifalar ro'yxati bo'sh. Yuqoridan qo'shishingiz mumkin.</div>`;
         return;
       }
 
@@ -2036,18 +2073,17 @@
       const text = textInput.value.trim();
       if (!text) return;
 
-      const newTodo = {
-        id: "todo_" + Date.now(),
-        text,
-        priority: prioritySelect.value,
-        completed: false
-      };
-
+      const newTodo = { id: "todo_" + Date.now(), text, priority: prioritySelect.value, completed: false };
       todos.unshift(newTodo);
       saveData("stratix_todos_v2", todos);
       textInput.value = "";
       renderTodos();
       showToast("Vazifa qo'shildi!");
+
+      sendTelegramNotification(
+        `📝 <b>Yangi Tezkor Vazifa:</b>\n` +
+        `"${text}" [${prioritySelect.value === 'high' ? '🔥 Muhim' : 'Oddiy'}]`
+      );
     }
 
     function toggleTodo(id, isCompleted) {
@@ -2056,6 +2092,9 @@
         t.completed = isCompleted;
         saveData("stratix_todos_v2", todos);
         renderTodos();
+        if (isCompleted) {
+          sendTelegramNotification(`✨ <b>Vazifa Bajarildi:</b> "${t.text}"`);
+        }
       }
     }
 
@@ -2066,18 +2105,14 @@
     }
 
     /* ======================================================================
-       KITOBLAR & O'QISH REJASI FUNKSIYALARI
+       KITOBLAR VA O'QISH REJASI
        ====================================================================== */
     function renderBooks() {
       const container = document.getElementById("booksContainer");
       container.innerHTML = "";
 
       if (books.length === 0) {
-        container.innerHTML = `
-          <div style="text-align:center; padding: 2rem; color:var(--text-muted); font-size:0.85rem;">
-            Hozircha kitob qo'shilmagan.
-          </div>
-        `;
+        container.innerHTML = `<div style="text-align:center; padding: 2rem; color:var(--text-muted); font-size:0.85rem;">Hozircha kitob qo'shilmagan.</div>`;
         return;
       }
 
@@ -2138,30 +2173,41 @@
 
       if (!title) return;
 
-      const newBook = {
-        id: "book_" + Date.now(),
-        title,
-        author,
-        totalPages,
-        readPages: Math.min(totalPages, readPages)
-      };
-
+      const newBook = { id: "book_" + Date.now(), title, author, totalPages, readPages: Math.min(totalPages, readPages) };
       books.push(newBook);
       saveData("stratix_books_v2", books);
       closeBookModal();
       renderBooks();
       updateDashboardStats();
       showToast("Kitob qo'shildi! Mutolaa maroqli bo'lsin 📖");
+
+      sendTelegramNotification(
+        `📚 <b>Yangi Kitob Qo'shildi:</b>\n` +
+        `📖 "<b>${title}</b>" (${author || 'Muallif noma\'lum'})\n` +
+        `📄 Jami: <b>${totalPages} bet</b>`
+      );
     }
 
     function updateBookPages(id, delta) {
       const b = books.find(item => item.id === id);
       if (!b) return;
+      const oldPages = b.readPages;
       b.readPages = Math.min(b.totalPages, Math.max(0, b.readPages + delta));
       saveData("stratix_books_v2", books);
       renderBooks();
-      if (b.readPages >= b.totalPages) {
+
+      const percent = Math.round((b.readPages / b.totalPages) * 100);
+      if (b.readPages >= b.totalPages && oldPages < b.totalPages) {
         showToast(`Qoyil! "${b.title}" kitobini muvaffaqiyatli tugatdingiz! 🎉`);
+        sendTelegramNotification(
+          `🎉 <b>KITOB TUGATILDI!</b>\n\n` +
+          `📖 "<b>${b.title}</b>" to'liq ${b.totalPages} sahifa o'qib tugatildi! Yangi ilmlar muborak bo'lsin!`
+        );
+      } else if (oldPages !== b.readPages) {
+        sendTelegramNotification(
+          `📖 <b>Mutolaa qaydnomasi:</b> "${b.title}"\n` +
+          `Sahifalar: <b>${b.readPages} / ${b.totalPages} bet</b> (${percent}%)`
+        );
       }
     }
 
@@ -2176,6 +2222,9 @@
           saveData("stratix_books_v2", books);
           renderBooks();
           showToast("Kitob sahifasi yangilandi.");
+          sendTelegramNotification(
+            `📖 <b>Kitob sahifasi:</b> "${b.title}" &rarr; <b>${b.readPages} / ${max} bet</b>`
+          );
         }
       }
     }
@@ -2189,11 +2238,7 @@
       }
     }
 
-    /* ======================================================================
-       DASHBOARD STATISTIKALARI
-       ====================================================================== */
     function updateDashboardStats() {
-      // 1. Maqsadlar soni va o'rtacha foizi
       document.getElementById("dashGoalsCount").textContent = goals.length;
       if (goals.length > 0) {
         const totalP = goals.reduce((acc, curr) => acc + (curr.progress || 0), 0);
@@ -2203,17 +2248,13 @@
         document.getElementById("dashGoalsProgress").textContent = "0%";
       }
 
-      // 2. Kun tartibi foizi
       const scheduleKeys = Object.keys(schedule);
       let schCompleted = 0;
       scheduleKeys.forEach(k => { if (schedule[k].completed) schCompleted++; });
       const schPercent = scheduleKeys.length ? Math.round((schCompleted / scheduleKeys.length) * 100) : 0;
       document.getElementById("dashScheduleProgress").textContent = schPercent + "%";
-
-      // 3. Kitoblar soni
       document.getElementById("dashBooksCount").textContent = books.length;
 
-      // 4. Asosiy maqsadlar mini ro'yxati (eng yaqin yillar)
       const topList = document.getElementById("dashTopGoalsList");
       topList.innerHTML = "";
       const displayGoals = goals.slice(0, 3);
@@ -2237,18 +2278,8 @@
       }
     }
 
-    /* ======================================================================
-       EKSPORT & IMPORT (JSON Backup)
-       ====================================================================== */
     function exportData() {
-      const fullData = {
-        goals,
-        schedule,
-        todos,
-        books,
-        exportedAt: new Date().toISOString()
-      };
-
+      const fullData = { goals, schedule, todos, books, tgConfig: TG_CONFIG, exportedAt: new Date().toISOString() };
       const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(fullData, null, 2));
       const downloadAnchor = document.createElement("a");
       downloadAnchor.setAttribute("href", dataStr);
@@ -2256,7 +2287,6 @@
       document.body.appendChild(downloadAnchor);
       downloadAnchor.click();
       downloadAnchor.remove();
-
       showToast("Barcha ma'lumotlar zaxirasi JSON fayl sifatida yuklandi! 💾");
     }
 
@@ -2277,11 +2307,13 @@
             schedule = parsed.schedule;
             todos = parsed.todos || [];
             books = parsed.books || [];
+            if (parsed.tgConfig) TG_CONFIG = parsed.tgConfig;
 
             saveData("stratix_goals_v2", goals);
             saveData("stratix_schedule_v2", schedule);
             saveData("stratix_todos_v2", todos);
             saveData("stratix_books_v2", books);
+            saveData("stratix_tg_config", TG_CONFIG);
 
             renderAll();
             showToast("Ma'lumotlar muvaffaqiyatli tiklandi! ✅");
@@ -2296,9 +2328,6 @@
       event.target.value = "";
     }
 
-    /* ======================================================================
-       TOAST VA YORDAMCHI FUNKSIYALAR
-       ====================================================================== */
     function showToast(message) {
       const container = document.getElementById("toastContainer");
       const toast = document.createElement("div");
