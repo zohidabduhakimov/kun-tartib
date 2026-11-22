@@ -1,0 +1,2331 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hayot Strategiyasi | 10 Yillik Reja & Kun Tartibi</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       ASOSIY STILLAR VA O'ZGARUVCHILAR (Dark Mode & Neon Glassmorphism)
+       ========================================================================== */
+    :root {
+      --bg-dark: #070913;
+      --bg-card: rgba(18, 24, 43, 0.65);
+      --bg-card-hover: rgba(28, 37, 65, 0.75);
+      --bg-input: rgba(13, 17, 33, 0.85);
+      --border-glass: rgba(255, 255, 255, 0.08);
+      --border-accent: rgba(0, 242, 254, 0.35);
+      
+      --neon-cyan: #00f2fe;
+      --neon-blue: #4facfe;
+      --neon-purple: #9d4edd;
+      --neon-pink: #f72585;
+      --neon-green: #10b981;
+      --neon-emerald: #05f292;
+      --neon-amber: #f59e0b;
+      --neon-red: #ef4444;
+
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+
+      --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-full: 9999px;
+
+      --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
+      --shadow-neon-cyan: 0 0 20px rgba(0, 242, 254, 0.25);
+      --shadow-neon-purple: 0 0 20px rgba(157, 78, 221, 0.25);
+      --shadow-neon-green: 0 0 20px rgba(16, 185, 129, 0.25);
+
+      --transition-smooth: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 10% 15%, rgba(79, 172, 254, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 90% 85%, rgba(157, 78, 221, 0.09) 0%, transparent 45%),
+        radial-gradient(circle at 50% 50%, rgba(5, 242, 146, 0.04) 0%, transparent 60%);
+      background-attachment: fixed;
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      line-height: 1.5;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 7px;
+      height: 7px;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgba(10, 14, 26, 0.7);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius-full);
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--neon-cyan);
+    }
+
+    /* ==========================================================================
+       HEADER & NAVIGATION
+       ========================================================================== */
+    .app-header {
+      backdrop-filter: blur(20px);
+      background: rgba(10, 14, 26, 0.75);
+      border-bottom: 1px solid var(--border-glass);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 1rem 1.5rem;
+    }
+
+    .header-container {
+      max-width: 1380px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .brand-section {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .logo-badge {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-neon-cyan);
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: #fff;
+    }
+
+    .brand-info h1 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(to right, #ffffff, var(--neon-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .brand-info p {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .time-widget {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: rgba(255, 255, 255, 0.04);
+      padding: 0.45rem 1rem;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border-glass);
+      font-size: 0.85rem;
+    }
+
+    .clock-time {
+      font-weight: 700;
+      color: var(--neon-cyan);
+      letter-spacing: 0.05em;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.55rem 1.15rem;
+      border-radius: var(--radius-md);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: var(--transition-smooth);
+      font-family: inherit;
+    }
+
+    .btn-glass {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-main);
+      border-color: var(--border-glass);
+    }
+    .btn-glass:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-1px);
+    }
+
+    .btn-neon-primary {
+      background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+      color: #070913;
+      box-shadow: 0 4px 15px rgba(0, 242, 254, 0.35);
+      font-weight: 700;
+    }
+    .btn-neon-primary:hover {
+      box-shadow: 0 6px 22px rgba(0, 242, 254, 0.55);
+      transform: translateY(-2px);
+    }
+
+    .btn-sm {
+      padding: 0.4rem 0.8rem;
+      font-size: 0.78rem;
+    }
+
+    .btn-icon {
+      padding: 0.55rem;
+      border-radius: var(--radius-md);
+    }
+
+    /* Tabs Navbar */
+    .tabs-nav-wrapper {
+      max-width: 1380px;
+      margin: 1.25rem auto 0;
+      padding: 0 1.5rem;
+    }
+
+    .tabs-nav {
+      display: flex;
+      gap: 0.5rem;
+      background: rgba(15, 21, 39, 0.7);
+      padding: 0.4rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-glass);
+      backdrop-filter: blur(12px);
+      overflow-x: auto;
+    }
+
+    .tab-btn {
+      flex: 1;
+      min-width: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 0.75rem 1rem;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      font-weight: 600;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      white-space: nowrap;
+    }
+
+    .tab-btn:hover {
+      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .tab-btn.active {
+      background: linear-gradient(135deg, rgba(79, 172, 254, 0.15), rgba(157, 78, 221, 0.2));
+      color: #fff;
+      border: 1px solid rgba(0, 242, 254, 0.35);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .tab-btn svg {
+      width: 18px;
+      height: 18px;
+      stroke-width: 2.2;
+    }
+
+    /* ==========================================================================
+       CONTAINER & SECTIONS
+       ========================================================================== */
+    .main-content {
+      max-width: 1380px;
+      width: 100%;
+      margin: 1.5rem auto 3rem;
+      padding: 0 1.5rem;
+      flex: 1;
+    }
+
+    .view-section {
+      display: none;
+      animation: fadeIn 0.35s ease;
+    }
+    .view-section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Glass Cards */
+    .glass-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      backdrop-filter: blur(16px);
+      box-shadow: var(--shadow-glass);
+      transition: var(--transition-smooth);
+    }
+
+    .glass-card:hover {
+      border-color: rgba(255, 255, 255, 0.14);
+    }
+
+    /* ==========================================================================
+       SECTION 1: DASHBOARD (BOSHQARUV PANELI)
+       ========================================================================== */
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .stat-card {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--stat-color, var(--neon-cyan));
+      border-radius: 4px 0 0 4px;
+    }
+
+    .stat-icon-wrap {
+      width: 52px;
+      height: 52px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-glass);
+      color: var(--stat-color, var(--neon-cyan));
+    }
+
+    .stat-details h4 {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .stat-details .stat-value {
+      font-size: 1.7rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .quote-banner {
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.85), rgba(30, 27, 75, 0.5));
+      border: 1px solid rgba(157, 78, 221, 0.25);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem 2rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .quote-text {
+      font-style: italic;
+      color: #e2e8f0;
+      font-size: 1.05rem;
+      position: relative;
+    }
+
+    .quote-author {
+      font-size: 0.85rem;
+      color: var(--neon-cyan);
+      margin-top: 0.4rem;
+      font-weight: 600;
+    }
+
+    /* ==========================================================================
+       SECTION 2: 10-YILLIK STRATEGIYA (VISION BOARD)
+       ========================================================================== */
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title {
+      font-size: 1.45rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .section-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+
+    .filter-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+      background: rgba(13, 17, 33, 0.6);
+      padding: 0.4rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-glass);
+    }
+
+    .filter-chip {
+      padding: 0.4rem 0.9rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+    .filter-chip:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.05);
+    }
+    .filter-chip.active {
+      background: var(--neon-blue);
+      color: #070913;
+      font-weight: 700;
+    }
+
+    .goals-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .goal-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1rem;
+      transition: var(--transition-smooth);
+      position: relative;
+    }
+
+    .goal-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(0, 242, 254, 0.4);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .goal-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .goal-year-badge {
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--radius-full);
+      background: rgba(0, 242, 254, 0.12);
+      color: var(--neon-cyan);
+      border: 1px solid rgba(0, 242, 254, 0.3);
+    }
+
+    .goal-category-badge {
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-full);
+      text-transform: capitalize;
+    }
+    .cat-karyera { background: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3); }
+    .cat-talim { background: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3); }
+    .cat-moliya { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .cat-shaxsiy { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
+    .cat-salomatlik { background: rgba(244, 63, 94, 0.15); color: #fb7185; border: 1px solid rgba(244, 63, 94, 0.3); }
+
+    .goal-title {
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.4;
+      margin: 0.4rem 0 0.2rem;
+    }
+
+    .goal-notes {
+      font-size: 0.83rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    .goal-progress-wrap {
+      margin-top: 0.5rem;
+    }
+
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 0.35rem;
+      font-weight: 600;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--neon-cyan), var(--neon-blue));
+      border-radius: var(--radius-full);
+      transition: width 0.4s ease;
+      box-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
+    }
+    .progress-fill.completed {
+      background: linear-gradient(90deg, #10b981, #05f292);
+      box-shadow: 0 0 10px rgba(16, 185, 129, 0.6);
+    }
+
+    .goal-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 0.6rem;
+      border-top: 1px solid var(--border-glass);
+    }
+
+    .goal-stepper {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .step-btn {
+      width: 26px;
+      height: 26px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border-glass);
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+    .step-btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+      color: var(--neon-cyan);
+    }
+
+    .card-icon-btn {
+      background: none;
+      border: none;
+      color: var(--text-dim);
+      cursor: pointer;
+      padding: 0.35rem;
+      border-radius: var(--radius-sm);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition-smooth);
+    }
+    .card-icon-btn:hover {
+      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.08);
+    }
+    .card-icon-btn.delete:hover {
+      color: var(--neon-red);
+      background: rgba(239, 68, 68, 0.15);
+    }
+
+    /* ==========================================================================
+       SECTION 3: KUN TARTIBI (06:00 - 23:00)
+       ========================================================================== */
+    .schedule-control-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--bg-card);
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-glass);
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .schedule-progress-box {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex: 1;
+      min-width: 240px;
+    }
+
+    .schedule-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .timeline-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-md);
+      padding: 0.85rem 1.25rem;
+      transition: var(--transition-smooth);
+      position: relative;
+    }
+
+    .timeline-item:hover {
+      border-color: rgba(0, 242, 254, 0.3);
+      background: var(--bg-card-hover);
+    }
+
+    .timeline-item.active-now {
+      border-color: var(--neon-cyan);
+      box-shadow: 0 0 15px rgba(0, 242, 254, 0.2);
+    }
+    .timeline-item.active-now::before {
+      content: 'HOZIR';
+      position: absolute;
+      top: -9px;
+      right: 18px;
+      font-size: 0.65rem;
+      font-weight: 800;
+      background: var(--neon-cyan);
+      color: #070913;
+      padding: 1px 8px;
+      border-radius: var(--radius-full);
+      letter-spacing: 0.05em;
+    }
+
+    .timeline-item.completed {
+      opacity: 0.72;
+      border-color: rgba(16, 185, 129, 0.3);
+    }
+    .timeline-item.completed .schedule-input {
+      text-decoration: line-through;
+      color: var(--text-dim);
+    }
+
+    .timeline-time {
+      min-width: 110px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .time-slot {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--neon-blue);
+      letter-spacing: 0.02em;
+    }
+
+    .time-label {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    .custom-checkbox {
+      position: relative;
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+
+    .custom-checkbox input {
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+      position: absolute;
+      z-index: 2;
+    }
+
+    .checkbox-mark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition-smooth);
+      color: transparent;
+    }
+
+    .custom-checkbox input:checked ~ .checkbox-mark {
+      background: var(--neon-green);
+      border-color: var(--neon-green);
+      color: #070913;
+      box-shadow: 0 0 12px rgba(16, 185, 129, 0.4);
+    }
+
+    .schedule-input {
+      flex: 1;
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-main);
+      font-size: 0.95rem;
+      font-weight: 500;
+      padding: 0.4rem 0.6rem;
+      border-radius: var(--radius-sm);
+      outline: none;
+      transition: var(--transition-smooth);
+      font-family: inherit;
+    }
+
+    .schedule-input:focus {
+      background: var(--bg-input);
+      border-color: var(--border-accent);
+    }
+
+    .schedule-tag-select {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-glass);
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      padding: 0.35rem 0.6rem;
+      border-radius: var(--radius-sm);
+      outline: none;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .schedule-tag-select option {
+      background: #0f172a;
+      color: #fff;
+    }
+
+    /* ==========================================================================
+       SECTION 4: VAZIFALAR & O'QISH (TO-DO & BOOK TRACKER)
+       ========================================================================== */
+    .planner-split-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 960px) {
+      .planner-split-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .todo-input-bar {
+      display: flex;
+      gap: 0.6rem;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .text-input {
+      flex: 1;
+      min-width: 180px;
+      background: var(--bg-input);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-md);
+      padding: 0.65rem 1rem;
+      color: var(--text-main);
+      font-size: 0.9rem;
+      outline: none;
+      transition: var(--transition-smooth);
+      font-family: inherit;
+    }
+
+    .text-input:focus {
+      border-color: var(--neon-cyan);
+      box-shadow: 0 0 10px rgba(0, 242, 254, 0.2);
+    }
+
+    .todo-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      max-height: 520px;
+      overflow-y: auto;
+      padding-right: 0.35rem;
+    }
+
+    .todo-item {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-md);
+      padding: 0.75rem 1rem;
+      transition: var(--transition-smooth);
+    }
+
+    .todo-item:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .todo-item.completed {
+      opacity: 0.6;
+    }
+    .todo-item.completed .todo-text {
+      text-decoration: line-through;
+      color: var(--text-dim);
+    }
+
+    .todo-text {
+      flex: 1;
+      font-size: 0.9rem;
+      word-break: break-word;
+    }
+
+    .priority-badge {
+      font-size: 0.7rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: var(--radius-full);
+      font-weight: 700;
+    }
+    .priority-high { background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.35); }
+    .priority-normal { background: rgba(59, 130, 246, 0.2); color: #93c5fd; border: 1px solid rgba(59, 130, 246, 0.35); }
+
+    /* Books / Reading tracker */
+    .books-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .book-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.15rem;
+      transition: var(--transition-smooth);
+    }
+
+    .book-card:hover {
+      border-color: rgba(157, 78, 221, 0.4);
+    }
+
+    .book-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.6rem;
+    }
+
+    .book-title {
+      font-weight: 700;
+      font-size: 0.98rem;
+      color: #fff;
+    }
+
+    .book-author {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .book-stats {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+
+    /* ==========================================================================
+       MODAL OYNALAR (Popups)
+       ========================================================================== */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(3, 7, 18, 0.8);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 200;
+      padding: 1.25rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition-smooth);
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-box {
+      background: #0f1629;
+      border: 1px solid rgba(0, 242, 254, 0.3);
+      border-radius: var(--radius-lg);
+      width: 100%;
+      max-width: 520px;
+      padding: 2rem;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), var(--shadow-neon-cyan);
+      transform: scale(0.95);
+      transition: var(--transition-smooth);
+    }
+
+    .modal-overlay.active .modal-box {
+      transform: scale(1);
+    }
+
+    .modal-title {
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin-bottom: 0.3rem;
+      color: #fff;
+    }
+
+    .modal-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .form-control {
+      width: 100%;
+      background: var(--bg-input);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-md);
+      padding: 0.75rem 1rem;
+      color: var(--text-main);
+      font-size: 0.9rem;
+      font-family: inherit;
+      outline: none;
+      transition: var(--transition-smooth);
+    }
+
+    .form-control:focus {
+      border-color: var(--neon-cyan);
+      box-shadow: 0 0 12px rgba(0, 242, 254, 0.25);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.75rem;
+      margin-top: 1.8rem;
+    }
+
+    /* Toast notification */
+    .toast-container {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .toast {
+      background: rgba(15, 23, 42, 0.92);
+      border: 1px solid var(--border-glass);
+      backdrop-filter: blur(12px);
+      padding: 0.85rem 1.25rem;
+      border-radius: var(--radius-md);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      color: #fff;
+      font-size: 0.88rem;
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      animation: slideInRight 0.3s ease;
+      max-width: 340px;
+    }
+
+    @keyframes slideInRight {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    /* Empty state */
+    .empty-state {
+      text-align: center;
+      padding: 3rem 1.5rem;
+      color: var(--text-muted);
+    }
+    .empty-state svg {
+      width: 48px;
+      height: 48px;
+      stroke: var(--text-dim);
+      margin-bottom: 0.75rem;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .time-widget {
+        justify-content: center;
+      }
+      .header-actions {
+        justify-content: space-between;
+      }
+      .tabs-nav {
+        padding: 0.25rem;
+      }
+      .tab-btn {
+        min-width: auto;
+        padding: 0.6rem 0.75rem;
+        font-size: 0.8rem;
+      }
+      .tab-btn span {
+        display: none;
+      }
+      .tab-btn.active span {
+        display: inline;
+      }
+      .timeline-item {
+        flex-wrap: wrap;
+      }
+      .schedule-input {
+        width: 100%;
+        order: 3;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="brand-section">
+        <div class="logo-badge">10X</div>
+        <div class="brand-info">
+          <h1>HAYOT STRATEGIYASI</h1>
+          <p>10 Yillik Vision &middot; Kun Tartibi &middot; Rivojlanish</p>
+        </div>
+      </div>
+
+      <div class="time-widget">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+        <span id="currentDateDisplay">Yuklanmoqda...</span>
+        <span class="clock-time" id="currentTimeDisplay">00:00:00</span>
+      </div>
+
+      <div class="header-actions">
+        <button class="btn btn-glass btn-sm" onclick="exportData()" title="Zaxira nusxasini yuklab olish">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Eksport
+        </button>
+        <button class="btn btn-glass btn-sm" onclick="triggerImport()" title="Ma'lumotlarni fayldan yuklash">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+          Import
+        </button>
+        <input type="file" id="importFileInput" accept=".json" style="display:none;" onchange="importData(event)">
+      </div>
+    </div>
+  </header>
+
+  <!-- NAVIGATION TABS -->
+  <div class="tabs-nav-wrapper">
+    <nav class="tabs-nav">
+      <button class="tab-btn active" data-tab="tab-dashboard" onclick="switchTab('tab-dashboard')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>
+        <span>Boshqaruv Paneli</span>
+      </button>
+      <button class="tab-btn" data-tab="tab-goals" onclick="switchTab('tab-goals')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+        <span>10 Yillik Maqsadlar</span>
+      </button>
+      <button class="tab-btn" data-tab="tab-schedule" onclick="switchTab('tab-schedule')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+        <span>Kun Tartibi (06:00+)</span>
+      </button>
+      <button class="tab-btn" data-tab="tab-tasks" onclick="switchTab('tab-tasks')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+        <span>Vazifalar & O'qish</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main class="main-content">
+
+    <!-- ====================================================================
+         TAB 1: BOSHQARUV PANELI (DASHBOARD)
+         ==================================================================== -->
+    <section id="tab-dashboard" class="view-section active">
+      <!-- Motivatsion iqtibos -->
+      <div class="quote-banner">
+        <div>
+          <div class="quote-text" id="quoteDisplay">"Kelajak bugun nima qilayotganingizga bog'liq."</div>
+          <div class="quote-author" id="quoteAuthor">&mdash; Mahatma Gandi</div>
+        </div>
+        <button class="btn btn-glass btn-icon" onclick="cycleQuote()" title="Boshqa iqtibos">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+        </button>
+      </div>
+
+      <!-- Statistika kartalari -->
+      <div class="dashboard-grid">
+        <div class="glass-card stat-card" style="--stat-color: var(--neon-cyan);">
+          <div class="stat-icon-wrap">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle></svg>
+          </div>
+          <div class="stat-details">
+            <h4>10 Yillik Maqsadlar</h4>
+            <div class="stat-value" id="dashGoalsCount">0</div>
+          </div>
+        </div>
+
+        <div class="glass-card stat-card" style="--stat-color: var(--neon-purple);">
+          <div class="stat-icon-wrap">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          </div>
+          <div class="stat-details">
+            <h4>O'rtacha Bajarilish</h4>
+            <div class="stat-value" id="dashGoalsProgress">0%</div>
+          </div>
+        </div>
+
+        <div class="glass-card stat-card" style="--stat-color: var(--neon-green);">
+          <div class="stat-icon-wrap">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          </div>
+          <div class="stat-details">
+            <h4>Bugungi Kun Tartibi</h4>
+            <div class="stat-value" id="dashScheduleProgress">0%</div>
+          </div>
+        </div>
+
+        <div class="glass-card stat-card" style="--stat-color: var(--neon-pink);">
+          <div class="stat-icon-wrap">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+          </div>
+          <div class="stat-details">
+            <h4>O'qilayotgan Kitoblar</h4>
+            <div class="stat-value" id="dashBooksCount">0</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tezkor umumiy ko'rinish panellari -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem;">
+        <!-- Joriy soatdagi vazifa -->
+        <div class="glass-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+            <h3 style="font-size: 1.1rem; font-weight: 700; color: #fff;">⏰ Ayni Vaqtdagi Vazifa</h3>
+            <span class="goal-year-badge" id="currentSlotTimeBadge">06:00 - 07:00</span>
+          </div>
+          <p id="currentSlotTaskText" style="font-size: 1rem; color: var(--text-muted); min-height: 48px;">
+            Hozircha rejalashtirilgan vazifa yo'q.
+          </p>
+          <div style="margin-top: 1rem;">
+            <button class="btn btn-glass btn-sm" onclick="switchTab('tab-schedule')">Kun tartibiga o'tish &rarr;</button>
+          </div>
+        </div>
+
+        <!-- 10 yillik eng muhim maqsadlar mini ko'rinishi -->
+        <div class="glass-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+            <h3 style="font-size: 1.1rem; font-weight: 700; color: #fff;">🎯 Asosiy Strategik Maqsadlar</h3>
+            <button class="btn btn-glass btn-sm" onclick="openGoalModal()">+ Yangi</button>
+          </div>
+          <div id="dashTopGoalsList" style="display: flex; flex-direction: column; gap: 0.75rem;">
+            <!-- Dinamik generatsiya qilinadi -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         TAB 2: 10 YILLIK MAQSADLAR (VISION BOARD)
+         ==================================================================== -->
+    <section id="tab-goals" class="view-section">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--neon-cyan)" stroke-width="2.2"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+            10 Yillik Strategik Reja (2026 &mdash; 2035)
+          </h2>
+          <p class="section-subtitle">Kelgusi o'n yillik hayotingizni shakllantiruvchi buyuk maqsadlaringiz</p>
+        </div>
+        <button class="btn btn-neon-primary" onclick="openGoalModal()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          Yangi Maqsad Qo'shish
+        </button>
+      </div>
+
+      <!-- Yillar va kategoriyalar bo'yicha filterlar -->
+      <div class="filter-bar">
+        <button class="filter-chip active" onclick="filterGoals('all', this)">Barchasi</button>
+        <button class="filter-chip" onclick="filterGoals('2026', this)">2026 (1-yil)</button>
+        <button class="filter-chip" onclick="filterGoals('2027', this)">2027 (2-yil)</button>
+        <button class="filter-chip" onclick="filterGoals('2028', this)">2028 (3-yil)</button>
+        <button class="filter-chip" onclick="filterGoals('2030', this)">2030 (5-yil)</button>
+        <button class="filter-chip" onclick="filterGoals('2035', this)">2035 (10-yil)</button>
+        <span style="border-left: 1px solid var(--border-glass); margin: 0 4px; height: 18px;"></span>
+        <button class="filter-chip" onclick="filterGoals('cat-karyera', this)">Karyera</button>
+        <button class="filter-chip" onclick="filterGoals('cat-talim', this)">Ta'lim</button>
+        <button class="filter-chip" onclick="filterGoals('cat-moliya', this)">Moliya</button>
+        <button class="filter-chip" onclick="filterGoals('cat-shaxsiy', this)">Shaxsiy</button>
+      </div>
+
+      <!-- Maqsadlar ro'yxati kartalari -->
+      <div class="goals-grid" id="goalsGridContainer">
+        <!-- JS orqali to'ldiriladi -->
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         TAB 3: KUN TARTIBI (06:00 - 23:00)
+         ==================================================================== -->
+    <section id="tab-schedule" class="view-section">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--neon-green)" stroke-width="2.2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            Kunlik Kun Tartibi (06:00 &mdash; 23:00)
+          </h2>
+          <p class="section-subtitle">Intizom &mdash; bu reja va amal o'rtasidagi ko'prikdir</p>
+        </div>
+        <div style="display:flex; gap: 0.5rem; flex-wrap: wrap;">
+          <button class="btn btn-glass btn-sm" onclick="loadDefaultScheduleRoutine()">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+            Namunaviy Tartibni Yuklash
+          </button>
+          <button class="btn btn-glass btn-sm" onclick="resetDayChecks()">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
+            Belgilarni Yangilash (Yangi Kun)
+          </button>
+        </div>
+      </div>
+
+      <!-- Kunlik bajarilish ko'rsatkichi -->
+      <div class="schedule-control-bar">
+        <div class="schedule-progress-box">
+          <div style="font-weight: 700; font-size: 0.88rem; color: #fff; min-width: 140px;">
+            Bugungi Intizom: <span id="scheduleProgressNum" style="color:var(--neon-green)">0%</span>
+          </div>
+          <div class="progress-track" style="height: 10px;">
+            <div id="scheduleProgressBar" class="progress-fill" style="width: 0%;"></div>
+          </div>
+        </div>
+        <div style="font-size: 0.8rem; color: var(--text-muted);">
+          Bajarilgan soatlar: <span id="scheduleCompletedCount" style="color:#fff; font-weight:700;">0</span> / 17
+        </div>
+      </div>
+
+      <!-- Soatlik bloklar konteyneri -->
+      <div class="schedule-timeline" id="scheduleTimelineContainer">
+        <!-- JS orqali generatsiya qilinadi -->
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         TAB 4: VAZIFALAR VA O'QISH REJASI (TO-DO & STUDY)
+         ==================================================================== -->
+    <section id="tab-tasks" class="view-section">
+      <div class="planner-split-grid">
+        
+        <!-- Vazifalar (To-Do) -->
+        <div class="glass-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+            <h3 style="font-size: 1.2rem; font-weight: 800; color: #fff; display:flex; align-items:center; gap:0.5rem;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--neon-cyan)" stroke-width="2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+              Tezkor Vazifalar Ro'yxati
+            </h3>
+            <span id="todoBadgeCounter" class="goal-year-badge">0 ta qoldi</span>
+          </div>
+
+          <form id="todoForm" onsubmit="addTodoItem(event)" class="todo-input-bar">
+            <input type="text" id="todoInputText" class="text-input" placeholder="Yangi vazifa yoki loyiha..." required>
+            <select id="todoPrioritySelect" class="schedule-tag-select">
+              <option value="normal">Oddiy</option>
+              <option value="high">🔥 Muhim</option>
+            </select>
+            <button type="submit" class="btn btn-neon-primary btn-sm">+ Qo'shish</button>
+          </form>
+
+          <div class="todo-list" id="todoListContainer">
+            <!-- JS orqali to'ldiriladi -->
+          </div>
+        </div>
+
+        <!-- Kitobxonlik & O'qish rejasi -->
+        <div class="glass-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+            <h3 style="font-size: 1.2rem; font-weight: 800; color: #fff; display:flex; align-items:center; gap:0.5rem;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--neon-purple)" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+              Kitobxonlik & O'qish Rejasi
+            </h3>
+            <button class="btn btn-glass btn-sm" onclick="openBookModal()">+ Kitob Qo'shish</button>
+          </div>
+
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+            Ilm &mdash; eng foydali investitsiya. Sahifalar sonini qayd etib boring.
+          </p>
+
+          <div class="books-container" id="booksContainer">
+            <!-- JS orqali to'ldiriladi -->
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ====================================================================
+       MODAL 1: MAQSAD QO'SHISH / TAHRIRLASH
+       ==================================================================== -->
+  <div class="modal-overlay" id="goalModal">
+    <div class="modal-box">
+      <h3 class="modal-title" id="goalModalTitle">Yangi 10 Yillik Maqsad</h3>
+      <p class="modal-subtitle">Strategik maqsadingizni aniq va o'lchovli qilib belgilang</p>
+      
+      <form id="goalForm" onsubmit="saveGoal(event)">
+        <input type="hidden" id="goalEditId">
+
+        <div class="form-group">
+          <label class="form-label">Maqsad nomi *</label>
+          <input type="text" id="goalTitleInput" class="form-control" placeholder="Masalan: Senior AI Muhandis bo'lish" required>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Mo'ljallangan Yil *</label>
+            <select id="goalYearSelect" class="form-control" required>
+              <option value="2026">2026 (1-yil)</option>
+              <option value="2027">2027 (2-yil)</option>
+              <option value="2028">2028 (3-yil)</option>
+              <option value="2029">2029 (4-yil)</option>
+              <option value="2030">2030 (5-yil)</option>
+              <option value="2031">2031 (6-yil)</option>
+              <option value="2032">2032 (7-yil)</option>
+              <option value="2033">2033 (8-yil)</option>
+              <option value="2034">2034 (9-yil)</option>
+              <option value="2035">2035 (10-yil)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Yo'nalish (Kategoriya)</label>
+            <select id="goalCategorySelect" class="form-control">
+              <option value="karyera">Karyera & Kasb</option>
+              <option value="talim">Ta'lim & Bilim</option>
+              <option value="moliya">Moliyaviy Erkinlik</option>
+              <option value="shaxsiy">Shaxsiy Rivojlanish</option>
+              <option value="salomatlik">Sog'liq & Sport</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Hozirgi Bajarilish Foizi: <span id="progressValuePreview" style="color:var(--neon-cyan)">0%</span></label>
+          <input type="range" id="goalProgressInput" min="0" max="100" value="0" step="5" class="form-control" style="cursor:pointer;" oninput="document.getElementById('progressValuePreview').innerText = this.value + '%'">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Qo'shimcha izoh / Reja qadamlari</label>
+          <textarea id="goalNotesInput" class="form-control" rows="3" placeholder="Ushbu maqsadga erishish uchun qanday qadamlar talab etiladi..."></textarea>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="btn btn-glass" onclick="closeGoalModal()">Bekor qilish</button>
+          <button type="submit" class="btn btn-neon-primary">Saqlash</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       MODAL 2: KITOB QO'SHISH / TAHRIRLASH
+       ==================================================================== -->
+  <div class="modal-overlay" id="bookModal">
+    <div class="modal-box">
+      <h3 class="modal-title">Kitob Rejasini Qo'shish</h3>
+      <p class="modal-subtitle">Mutolaa &mdash; ongni charxlovchi quroldir</p>
+      
+      <form id="bookForm" onsubmit="saveBook(event)">
+        <div class="form-group">
+          <label class="form-label">Kitob Nomi *</label>
+          <input type="text" id="bookTitleInput" class="form-control" placeholder="Masalan: Atom Odatlar" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Muallif</label>
+          <input type="text" id="bookAuthorInput" class="form-control" placeholder="Masalan: Jeyms Klir">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Jami Sahifalar *</label>
+            <input type="number" id="bookTotalPages" class="form-control" min="1" placeholder="320" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">O'qilgan Sahifalar</label>
+            <input type="number" id="bookReadPages" class="form-control" min="0" value="0" placeholder="0">
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="btn btn-glass" onclick="closeBookModal()">Bekor qilish</button>
+          <button type="submit" class="btn btn-neon-primary">Qo'shish</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- TOAST CONTAINER -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- ====================================================================
+       JAVASCRIPT DASTUR KODI
+       ==================================================================== -->
+  <script>
+    /* ======================================================================
+       DEFAULT NAMUNAVIY MA'LUMOTLAR (Initial Seed Data)
+       ====================================================================== */
+    const DEFAULT_GOALS = [
+      {
+        id: "goal_1",
+        year: "2026",
+        title: "Dasturlash va Sun'iy Intellekt bo'yicha kuchli mutaxassis bo'lish",
+        category: "karyera",
+        progress: 35,
+        notes: "Python, zamonaviy LLM texnologiyalari va arxitekturani mukammal o'rganish."
+      },
+      {
+        id: "goal_2",
+        year: "2026",
+        title: "Yil davomida 24 ta foydali kitob mutolaa qilish",
+        category: "talim",
+        progress: 50,
+        notes: "Har oy kamida 2 ta strategik va psixologik adabiyot o'qib tugatish."
+      },
+      {
+        id: "goal_3",
+        year: "2027",
+        title: "Ingliz tilidan C1 darajasiga chiqish va xalqaro loyihalarga kirish",
+        category: "talim",
+        progress: 20,
+        notes: "IELTS 7.5+ yoki kundalik ravon so'zlashuv darajasi."
+      },
+      {
+        id: "goal_4",
+        year: "2028",
+        title: "Shaxsiy startup / raqamli mahsulotni ishga tushirish",
+        category: "moliya",
+        progress: 10,
+        notes: "Bozor talabidagi SaaS yoki AI xizmat yaratish."
+      },
+      {
+        id: "goal_5",
+        year: "2030",
+        title: "Moliyaviy erkinlik va passiv daromad manbalarini yaratish",
+        category: "moliya",
+        progress: 15,
+        notes: "Investitsiyalar portfeli va ko'chmas mulk aktivlarini shakllantirish."
+      },
+      {
+        id: "goal_6",
+        year: "2035",
+        title: "Sohada yetakchi ekspert va yoshlar ustozi bo'lish",
+        category: "shaxsiy",
+        progress: 5,
+        notes: "Katta ta'lim akademiyasi yoki venchur fondiga asos solish."
+      }
+    ];
+
+    const DEFAULT_SCHEDULE = {
+      "06:00 - 07:00": { task: "Turish, tahorat/dush, badantarbiya va tetiklashish", completed: false, category: "Odat" },
+      "07:00 - 08:00": { task: "Foydali kitob mutolaasi va kunlik rejalashtirish", completed: false, category: "O'qish" },
+      "08:00 - 09:00": { task: "To'yimli nonushta va ishga/o'qishga tayyorgarlik", completed: false, category: "Odat" },
+      "09:00 - 10:00": { task: "Eng muhim vazifaga (Deep Work) sho'ng'ish - 1-blok", completed: false, category: "Ish" },
+      "10:00 - 11:00": { task: "Asosiy loyiha ustida diqqat bilan ishlash", completed: false, category: "Ish" },
+      "11:00 - 12:00": { task: "Kod yozish yoki vazifalarni bajarish - 2-blok", completed: false, category: "Ish" },
+      "12:00 - 13:00": { task: "Tushlik, toza havoda qisqa sayr va dam olish", completed: false, category: "Dam olish" },
+      "13:00 - 14:00": { task: "Xabarlar, yozishmalar va yengil ma'muriy ishlar", completed: false, category: "Ish" },
+      "14:00 - 15:00": { task: "Ta'lim: yangi texnologiya yoki kurslarni o'rganish", completed: false, category: "O'qish" },
+      "15:00 - 16:00": { task: "Amaliy mashg'ulot va muammolarni yechish", completed: false, category: "O'qish" },
+      "16:00 - 17:00": { task: "Loyihaning test sinovlari va natijalarni tekshirish", completed: false, category: "Ish" },
+      "17:00 - 18:00": { task: "Kunlik ishlarni yakunlash va xulosalar", completed: false, category: "Ish" },
+      "18:00 - 19:30": { task: "Sport mashg'uloti / Yurish / Jismoniy faollik", completed: false, category: "Sport" },
+      "19:30 - 20:30": { task: "Kechki ovqat va oila davrasida suhbat", completed: false, category: "Shaxsiy" },
+      "20:30 - 21:30": { task: "Chet tili o'rganish yoki erkin ijodiy loyiha", completed: false, category: "O'qish" },
+      "21:30 - 22:30": { task: "Kun sarhisobi, ertangi kun rejasini tuzish, kitob", completed: false, category: "Odat" },
+      "22:30 - 23:00": { task: "Gadjetlarni chetga surish, meditatsiya va uyquga yotish", completed: false, category: "Dam olish" }
+    };
+
+    const DEFAULT_TODOS = [
+      { id: "todo_1", text: "Kun tartibidagi 3 ta asosiy blokni to'liq bajarish", priority: "high", completed: false },
+      { id: "todo_2", text: "Ingliz tilidan 20 ta yangi so'z va iborani takrorlash", priority: "normal", completed: true },
+      { id: "todo_3", text: "Kitobdan kamida 25 sahifa o'qib qisqa konspekt yozish", priority: "normal", completed: false }
+    ];
+
+    const DEFAULT_BOOKS = [
+      { id: "book_1", title: "Atom Odatlar", author: "Jeyms Klir", totalPages: 310, readPages: 185 },
+      { id: "book_2", title: "Chuqur Ish (Deep Work)", author: "Kel Nyuport", totalPages: 290, readPages: 90 }
+    ];
+
+    const MOTIVATIONAL_QUOTES = [
+      { text: "Kelajak bugun nima qilayotganingizga bog'liq.", author: "Mahatma Gandi" },
+      { text: "Rejasiz maqsad &mdash; shunchaki bir xomxayol.", author: "Antuan de Sent-Ekzyuperi" },
+      { text: "Intizom erkinlikka olib boruvchi yagona yo'ldir.", author: "Joko Villink" },
+      { text: "Kichik odatlarning yig'indisi ulkan natijalarni beradi.", author: "Jeyms Klir" },
+      { text: "O'n yillik reja sizni o'rtamiyonalikdan asraydi.", author: "Strategiya donoligi" },
+      { text: "Vaqtingiz cheklangan, uni boshqalarning hayotini yashashga sarflamang.", author: "Stiv Jobs" }
+    ];
+
+    /* ======================================================================
+       STORAGE FUNCTIONS
+       ====================================================================== */
+    function loadData(key, fallback) {
+      try {
+        const item = localStorage.getItem(key);
+        return item ? JSON.parse(item) : fallback;
+      } catch (e) {
+        console.error("Storage yuklashda xatolik:", e);
+        return fallback;
+      }
+    }
+
+    function saveData(key, val) {
+      try {
+        localStorage.setItem(key, JSON.stringify(val));
+      } catch (e) {
+        console.error("Storage saqlashda xatolik:", e);
+        showToast("Ma'lumotni saqlab bo'lmadi!");
+      }
+    }
+
+    // STATE
+    let goals = loadData("stratix_goals_v2", DEFAULT_GOALS);
+    let schedule = loadData("stratix_schedule_v2", DEFAULT_SCHEDULE);
+    let todos = loadData("stratix_todos_v2", DEFAULT_TODOS);
+    let books = loadData("stratix_books_v2", DEFAULT_BOOKS);
+    let currentGoalFilter = "all";
+    let quoteIndex = 0;
+
+    /* ======================================================================
+       INITIALIZATION
+       ====================================================================== */
+    window.addEventListener("DOMContentLoaded", () => {
+      startClock();
+      renderAll();
+      highlightCurrentTimeSlot();
+      setInterval(highlightCurrentTimeSlot, 60000); // Har daqiqada tekshirib turadi
+    });
+
+    function renderAll() {
+      renderGoals();
+      renderSchedule();
+      renderTodos();
+      renderBooks();
+      updateDashboardStats();
+    }
+
+    /* ======================================================================
+       TIME & CLOCK & QUOTES
+       ====================================================================== */
+    function startClock() {
+      const timeEl = document.getElementById("currentTimeDisplay");
+      const dateEl = document.getElementById("currentDateDisplay");
+
+      const monthsUz = [
+        "Yanvar", "Fevral", "Mart", "Aprel", "May", "Iyun",
+        "Iyul", "Avgust", "Sentabr", "Oktabr", "Noyabr", "Dekabr"
+      ];
+      const daysUz = [
+        "Yakshanba", "Dushanba", "Seshanba", "Chorshanba",
+        "Payshanba", "Juma", "Shanba"
+      ];
+
+      function tick() {
+        const now = new Date();
+        const d = String(now.getDate()).padStart(2, '0');
+        const m = monthsUz[now.getMonth()];
+        const y = now.getFullYear();
+        const day = daysUz[now.getDay()];
+
+        const hh = String(now.getHours()).padStart(2, '0');
+        const mm = String(now.getMinutes()).padStart(2, '0');
+        const ss = String(now.getSeconds()).padStart(2, '0');
+
+        dateEl.textContent = `${day}, ${d}-${m}, ${y}`;
+        timeEl.textContent = `${hh}:${mm}:${ss}`;
+      }
+      tick();
+      setInterval(tick, 1000);
+    }
+
+    function cycleQuote() {
+      quoteIndex = (quoteIndex + 1) % MOTIVATIONAL_QUOTES.length;
+      const q = MOTIVATIONAL_QUOTES[quoteIndex];
+      document.getElementById("quoteDisplay").innerHTML = `"${q.text}"`;
+      document.getElementById("quoteAuthor").innerHTML = `&mdash; ${q.author}`;
+    }
+
+    /* ======================================================================
+       TABS NAVIGATION
+       ====================================================================== */
+    function switchTab(tabId) {
+      document.querySelectorAll(".tab-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.tab === tabId);
+      });
+
+      document.querySelectorAll(".view-section").forEach(sec => {
+        sec.classList.toggle("active", sec.id === tabId);
+      });
+
+      // Agar boshqaruv paneliga o'tsa statistikani qayta sanaymiz
+      if (tabId === "tab-dashboard") {
+        updateDashboardStats();
+      }
+    }
+
+    /* ======================================================================
+       10 YILLIK MAQSADLAR FUNKSIYALARI
+       ====================================================================== */
+    function renderGoals() {
+      const container = document.getElementById("goalsGridContainer");
+      container.innerHTML = "";
+
+      let filtered = goals;
+      if (currentGoalFilter !== "all") {
+        if (currentGoalFilter.startsWith("cat-")) {
+          const cat = currentGoalFilter.replace("cat-", "");
+          filtered = goals.filter(g => g.category === cat);
+        } else {
+          filtered = goals.filter(g => g.year === currentGoalFilter);
+        }
+      }
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="glass-card empty-state" style="grid-column: 1 / -1;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+            <p>Ushbu bo'limda hozircha maqsadlar kiritilmagan.</p>
+            <button class="btn btn-neon-primary btn-sm" style="margin-top:1rem;" onclick="openGoalModal()">+ Maqsad Qo'shish</button>
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach(goal => {
+        const catClass = "cat-" + (goal.category || "karyera");
+        const catLabels = {
+          karyera: "Karyera",
+          talim: "Ta'lim",
+          moliya: "Moliya",
+          shaxsiy: "Shaxsiy",
+          salomatlik: "Sog'liq"
+        };
+        const catText = catLabels[goal.category] || goal.category;
+        const isDone = goal.progress >= 100;
+
+        const card = document.createElement("div");
+        card.className = "goal-card";
+        card.innerHTML = `
+          <div>
+            <div class="goal-card-top">
+              <span class="goal-year-badge">${goal.year}-yil</span>
+              <span class="goal-category-badge ${catClass}">${catText}</span>
+            </div>
+            <h3 class="goal-title">${escapeHtml(goal.title)}</h3>
+            ${goal.notes ? `<p class="goal-notes">${escapeHtml(goal.notes)}</p>` : ''}
+          </div>
+
+          <div class="goal-progress-wrap">
+            <div class="progress-header">
+              <span>Bajarilish:</span>
+              <span style="font-weight:700; color:${isDone ? 'var(--neon-green)' : 'var(--neon-cyan)'}">${goal.progress}%</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill ${isDone ? 'completed' : ''}" style="width: ${goal.progress}%;"></div>
+            </div>
+          </div>
+
+          <div class="goal-actions">
+            <div class="goal-stepper">
+              <button class="step-btn" onclick="adjustGoalProgress('${goal.id}', -5)" title="-5%">&minus;</button>
+              <button class="step-btn" onclick="adjustGoalProgress('${goal.id}', +5)" title="+5%">&plus;</button>
+              <button class="step-btn" onclick="adjustGoalProgress('${goal.id}', 100 - ${goal.progress})" title="100% Qilish">✓</button>
+            </div>
+            <div style="display: flex; gap: 0.25rem;">
+              <button class="card-icon-btn" onclick="editGoal('${goal.id}')" title="Tahrirlash">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+              </button>
+              <button class="card-icon-btn delete" onclick="deleteGoal('${goal.id}')" title="O'chirish">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+              </button>
+            </div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function filterGoals(filterKey, element) {
+      currentGoalFilter = filterKey;
+      document.querySelectorAll(".filter-chip").forEach(chip => chip.classList.remove("active"));
+      if (element) element.classList.add("active");
+      renderGoals();
+    }
+
+    function openGoalModal(goal = null) {
+      document.getElementById("goalModal").classList.add("active");
+      if (goal) {
+        document.getElementById("goalModalTitle").innerText = "Maqsadni Tahrirlash";
+        document.getElementById("goalEditId").value = goal.id;
+        document.getElementById("goalTitleInput").value = goal.title;
+        document.getElementById("goalYearSelect").value = goal.year;
+        document.getElementById("goalCategorySelect").value = goal.category;
+        document.getElementById("goalProgressInput").value = goal.progress;
+        document.getElementById("progressValuePreview").innerText = goal.progress + "%";
+        document.getElementById("goalNotesInput").value = goal.notes || "";
+      } else {
+        document.getElementById("goalModalTitle").innerText = "Yangi 10 Yillik Maqsad";
+        document.getElementById("goalEditId").value = "";
+        document.getElementById("goalForm").reset();
+        document.getElementById("progressValuePreview").innerText = "0%";
+      }
+    }
+
+    function closeGoalModal() {
+      document.getElementById("goalModal").classList.remove("active");
+    }
+
+    function saveGoal(e) {
+      e.preventDefault();
+      const id = document.getElementById("goalEditId").value;
+      const title = document.getElementById("goalTitleInput").value.trim();
+      const year = document.getElementById("goalYearSelect").value;
+      const category = document.getElementById("goalCategorySelect").value;
+      const progress = parseInt(document.getElementById("goalProgressInput").value) || 0;
+      const notes = document.getElementById("goalNotesInput").value.trim();
+
+      if (!title) return;
+
+      if (id) {
+        // Tahrirlash
+        const index = goals.findIndex(g => g.id === id);
+        if (index !== -1) {
+          goals[index] = { ...goals[index], title, year, category, progress, notes };
+          showToast("Maqsad muvaffaqiyatli tahrirlandi!");
+        }
+      } else {
+        // Yangi qo'shish
+        const newGoal = {
+          id: "goal_" + Date.now(),
+          title,
+          year,
+          category,
+          progress,
+          notes
+        };
+        goals.unshift(newGoal);
+        showToast("Yangi strategik maqsad qo'shildi! 🚀");
+      }
+
+      saveData("stratix_goals_v2", goals);
+      closeGoalModal();
+      renderGoals();
+      updateDashboardStats();
+    }
+
+    function editGoal(id) {
+      const g = goals.find(item => item.id === id);
+      if (g) openGoalModal(g);
+    }
+
+    function deleteGoal(id) {
+      if (confirm("Haqiqatan ham ushbu maqsadni o'chirmoqchimisiz?")) {
+        goals = goals.filter(g => g.id !== id);
+        saveData("stratix_goals_v2", goals);
+        renderGoals();
+        updateDashboardStats();
+        showToast("Maqsad o'chirildi.");
+      }
+    }
+
+    function adjustGoalProgress(id, delta) {
+      const g = goals.find(item => item.id === id);
+      if (!g) return;
+      g.progress = Math.min(100, Math.max(0, g.progress + delta));
+      saveData("stratix_goals_v2", goals);
+      renderGoals();
+      updateDashboardStats();
+      if (g.progress === 100) {
+        showToast(`Tabriklaymiz! "${g.title}" maqsadi 100% bajarildi! 🎉`);
+      }
+    }
+
+    /* ======================================================================
+       KUN TARTIBI (06:00 - 23:00) FUNKSIYALARI
+       ====================================================================== */
+    function renderSchedule() {
+      const container = document.getElementById("scheduleTimelineContainer");
+      container.innerHTML = "";
+
+      const keys = Object.keys(schedule);
+      let completedCount = 0;
+
+      keys.forEach((slotTime) => {
+        const item = schedule[slotTime];
+        if (item.completed) completedCount++;
+
+        const div = document.createElement("div");
+        div.className = `timeline-item ${item.completed ? 'completed' : ''}`;
+        div.dataset.slot = slotTime;
+
+        div.innerHTML = `
+          <div class="timeline-time">
+            <span class="time-slot">${slotTime.split(' - ')[0]}</span>
+            <span class="time-label">${slotTime.split(' - ')[1]} gacha</span>
+          </div>
+
+          <label class="custom-checkbox">
+            <input type="checkbox" ${item.completed ? 'checked' : ''} onchange="toggleScheduleCheck('${slotTime}', this.checked)">
+            <span class="checkbox-mark">✓</span>
+          </label>
+
+          <input type="text" class="schedule-input" value="${escapeHtml(item.task || '')}" placeholder="Ushbu soatga vazifa yozing..." onchange="updateScheduleTask('${slotTime}', this.value)">
+
+          <select class="schedule-tag-select" onchange="updateScheduleCategory('${slotTime}', this.value)">
+            <option value="Odat" ${item.category === 'Odat' ? 'selected' : ''}>Odat</option>
+            <option value="Ish" ${item.category === 'Ish' ? 'selected' : ''}>Ish / Karyera</option>
+            <option value="O'qish" ${item.category === "O'qish" ? 'selected' : ''}>O'qish / Ta'lim</option>
+            <option value="Sport" ${item.category === 'Sport' ? 'selected' : ''}>Sport / Sog'liq</option>
+            <option value="Dam olish" ${item.category === 'Dam olish' ? 'selected' : ''}>Dam olish</option>
+            <option value="Shaxsiy" ${item.category === 'Shaxsiy' ? 'selected' : ''}>Shaxsiy</option>
+          </select>
+        `;
+        container.appendChild(div);
+      });
+
+      // Foizni yangilash
+      const percent = keys.length ? Math.round((completedCount / keys.length) * 100) : 0;
+      document.getElementById("scheduleProgressBar").style.width = percent + "%";
+      document.getElementById("scheduleProgressNum").textContent = percent + "%";
+      document.getElementById("scheduleCompletedCount").textContent = completedCount;
+
+      highlightCurrentTimeSlot();
+    }
+
+    function toggleScheduleCheck(slotTime, isChecked) {
+      if (schedule[slotTime]) {
+        schedule[slotTime].completed = isChecked;
+        saveData("stratix_schedule_v2", schedule);
+        renderSchedule();
+        updateDashboardStats();
+        if (isChecked) {
+          showToast(`Vaqt bloki (${slotTime}) bajarildi! 👍`);
+        }
+      }
+    }
+
+    function updateScheduleTask(slotTime, text) {
+      if (schedule[slotTime]) {
+        schedule[slotTime].task = text.trim();
+        saveData("stratix_schedule_v2", schedule);
+        updateDashboardStats();
+      }
+    }
+
+    function updateScheduleCategory(slotTime, cat) {
+      if (schedule[slotTime]) {
+        schedule[slotTime].category = cat;
+        saveData("stratix_schedule_v2", schedule);
+      }
+    }
+
+    function resetDayChecks() {
+      if (confirm("Kunlik barcha 'bajarildi' belgilarini yangi kunga o'tkazishni (tozalashni) xohlaysizmi? Vazifalar saqlanib qoladi.")) {
+        Object.keys(schedule).forEach(k => {
+          schedule[k].completed = false;
+        });
+        saveData("stratix_schedule_v2", schedule);
+        renderSchedule();
+        updateDashboardStats();
+        showToast("Barcha belgilar qayta tiklandi. Yangi kun muborak bo'lsin!");
+      }
+    }
+
+    function loadDefaultScheduleRoutine() {
+      if (confirm("Namunaviy samarali kun tartibini qayta yuklashni tasdiqlaysizmi?")) {
+        schedule = JSON.parse(JSON.stringify(DEFAULT_SCHEDULE));
+        saveData("stratix_schedule_v2", schedule);
+        renderSchedule();
+        updateDashboardStats();
+        showToast("Namunaviy tartib yuklandi!");
+      }
+    }
+
+    function highlightCurrentTimeSlot() {
+      const now = new Date();
+      const currentHour = now.getHours();
+
+      let matchedSlot = null;
+
+      document.querySelectorAll(".timeline-item").forEach(item => {
+        const slot = item.dataset.slot;
+        if (!slot) return;
+        const startHour = parseInt(slot.split(':')[0], 10);
+        const endPart = slot.split(' - ')[1];
+        const endHour = parseInt(endPart.split(':')[0], 10);
+
+        if (currentHour >= startHour && currentHour < endHour) {
+          item.classList.add("active-now");
+          matchedSlot = slot;
+        } else {
+          item.classList.remove("active-now");
+        }
+      });
+
+      // Dashboarddagi ayni vaqt blokini yangilash
+      const badge = document.getElementById("currentSlotTimeBadge");
+      const text = document.getElementById("currentSlotTaskText");
+      if (matchedSlot && schedule[matchedSlot]) {
+        badge.textContent = matchedSlot;
+        text.textContent = schedule[matchedSlot].task || "Ushbu soat uchun vazifa belgilanmagan.";
+      } else {
+        badge.textContent = "Dam olish vaqti";
+        text.textContent = "Kun tartibi soat 06:00 dan 23:00 gacha faol.";
+      }
+    }
+
+    /* ======================================================================
+       VAZIFALAR (TO-DO) FUNKSIYALARI
+       ====================================================================== */
+    function renderTodos() {
+      const container = document.getElementById("todoListContainer");
+      container.innerHTML = "";
+
+      let remaining = 0;
+      todos.forEach(t => { if (!t.completed) remaining++; });
+      document.getElementById("todoBadgeCounter").textContent = `${remaining} ta qoldi`;
+
+      if (todos.length === 0) {
+        container.innerHTML = `
+          <div style="text-align:center; padding: 2rem; color:var(--text-muted); font-size:0.85rem;">
+            Vazifalar ro'yxati bo'sh. Yuqoridan qo'shishingiz mumkin.
+          </div>
+        `;
+        return;
+      }
+
+      todos.forEach(todo => {
+        const item = document.createElement("div");
+        item.className = `todo-item ${todo.completed ? 'completed' : ''}`;
+        item.innerHTML = `
+          <label class="custom-checkbox">
+            <input type="checkbox" ${todo.completed ? 'checked' : ''} onchange="toggleTodo('${todo.id}', this.checked)">
+            <span class="checkbox-mark">✓</span>
+          </label>
+          <span class="todo-text">${escapeHtml(todo.text)}</span>
+          ${todo.priority === 'high' ? '<span class="priority-badge priority-high">Muhim</span>' : ''}
+          <button class="card-icon-btn delete" onclick="deleteTodo('${todo.id}')" title="O'chirish">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+        `;
+        container.appendChild(item);
+      });
+    }
+
+    function addTodoItem(e) {
+      e.preventDefault();
+      const textInput = document.getElementById("todoInputText");
+      const prioritySelect = document.getElementById("todoPrioritySelect");
+      const text = textInput.value.trim();
+      if (!text) return;
+
+      const newTodo = {
+        id: "todo_" + Date.now(),
+        text,
+        priority: prioritySelect.value,
+        completed: false
+      };
+
+      todos.unshift(newTodo);
+      saveData("stratix_todos_v2", todos);
+      textInput.value = "";
+      renderTodos();
+      showToast("Vazifa qo'shildi!");
+    }
+
+    function toggleTodo(id, isCompleted) {
+      const t = todos.find(item => item.id === id);
+      if (t) {
+        t.completed = isCompleted;
+        saveData("stratix_todos_v2", todos);
+        renderTodos();
+      }
+    }
+
+    function deleteTodo(id) {
+      todos = todos.filter(t => t.id !== id);
+      saveData("stratix_todos_v2", todos);
+      renderTodos();
+    }
+
+    /* ======================================================================
+       KITOBLAR & O'QISH REJASI FUNKSIYALARI
+       ====================================================================== */
+    function renderBooks() {
+      const container = document.getElementById("booksContainer");
+      container.innerHTML = "";
+
+      if (books.length === 0) {
+        container.innerHTML = `
+          <div style="text-align:center; padding: 2rem; color:var(--text-muted); font-size:0.85rem;">
+            Hozircha kitob qo'shilmagan.
+          </div>
+        `;
+        return;
+      }
+
+      books.forEach(book => {
+        const percent = Math.min(100, Math.round((book.readPages / book.totalPages) * 100)) || 0;
+        const isDone = percent >= 100;
+
+        const card = document.createElement("div");
+        card.className = "book-card";
+        card.innerHTML = `
+          <div class="book-header">
+            <div>
+              <div class="book-title">${escapeHtml(book.title)}</div>
+              ${book.author ? `<div class="book-author">${escapeHtml(book.author)}</div>` : ''}
+            </div>
+            <button class="card-icon-btn delete" onclick="deleteBook('${book.id}')" title="O'chirish">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+          </div>
+
+          <div class="book-stats">
+            <span>O'qildi: ${book.readPages} / ${book.totalPages} bet</span>
+            <span style="font-weight:700; color:${isDone ? 'var(--neon-green)' : 'var(--neon-purple)'};">${percent}%</span>
+          </div>
+
+          <div class="progress-track" style="margin-bottom: 0.85rem;">
+            <div class="progress-fill ${isDone ? 'completed' : ''}" style="width: ${percent}%; background: linear-gradient(90deg, var(--neon-purple), var(--neon-pink));"></div>
+          </div>
+
+          <div style="display:flex; justify-content: space-between; align-items:center;">
+            <div style="display:flex; gap:0.35rem;">
+              <button class="step-btn" onclick="updateBookPages('${book.id}', -10)" title="-10 bet">&minus;10</button>
+              <button class="step-btn" onclick="updateBookPages('${book.id}', +10)" title="+10 bet">+10</button>
+              <button class="step-btn" onclick="updateBookPages('${book.id}', +25)" title="+25 bet">+25</button>
+            </div>
+            <button class="btn btn-glass btn-sm" onclick="promptSetBookPage('${book.id}', ${book.readPages}, ${book.totalPages})">Sahifani kiritish</button>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function openBookModal() {
+      document.getElementById("bookModal").classList.add("active");
+      document.getElementById("bookForm").reset();
+    }
+
+    function closeBookModal() {
+      document.getElementById("bookModal").classList.remove("active");
+    }
+
+    function saveBook(e) {
+      e.preventDefault();
+      const title = document.getElementById("bookTitleInput").value.trim();
+      const author = document.getElementById("bookAuthorInput").value.trim();
+      const totalPages = parseInt(document.getElementById("bookTotalPages").value) || 1;
+      const readPages = parseInt(document.getElementById("bookReadPages").value) || 0;
+
+      if (!title) return;
+
+      const newBook = {
+        id: "book_" + Date.now(),
+        title,
+        author,
+        totalPages,
+        readPages: Math.min(totalPages, readPages)
+      };
+
+      books.push(newBook);
+      saveData("stratix_books_v2", books);
+      closeBookModal();
+      renderBooks();
+      updateDashboardStats();
+      showToast("Kitob qo'shildi! Mutolaa maroqli bo'lsin 📖");
+    }
+
+    function updateBookPages(id, delta) {
+      const b = books.find(item => item.id === id);
+      if (!b) return;
+      b.readPages = Math.min(b.totalPages, Math.max(0, b.readPages + delta));
+      saveData("stratix_books_v2", books);
+      renderBooks();
+      if (b.readPages >= b.totalPages) {
+        showToast(`Qoyil! "${b.title}" kitobini muvaffaqiyatli tugatdingiz! 🎉`);
+      }
+    }
+
+    function promptSetBookPage(id, current, max) {
+      const b = books.find(item => item.id === id);
+      if (!b) return;
+      const input = prompt(`Ayni vaqtda nechanchi sahifadasiz? (Maksimal: ${max})`, current);
+      if (input !== null) {
+        const val = parseInt(input, 10);
+        if (!isNaN(val)) {
+          b.readPages = Math.min(max, Math.max(0, val));
+          saveData("stratix_books_v2", books);
+          renderBooks();
+          showToast("Kitob sahifasi yangilandi.");
+        }
+      }
+    }
+
+    function deleteBook(id) {
+      if (confirm("Ushbu kitobni o'chirishni xohlaysizmi?")) {
+        books = books.filter(b => b.id !== id);
+        saveData("stratix_books_v2", books);
+        renderBooks();
+        updateDashboardStats();
+      }
+    }
+
+    /* ======================================================================
+       DASHBOARD STATISTIKALARI
+       ====================================================================== */
+    function updateDashboardStats() {
+      // 1. Maqsadlar soni va o'rtacha foizi
+      document.getElementById("dashGoalsCount").textContent = goals.length;
+      if (goals.length > 0) {
+        const totalP = goals.reduce((acc, curr) => acc + (curr.progress || 0), 0);
+        const avg = Math.round(totalP / goals.length);
+        document.getElementById("dashGoalsProgress").textContent = avg + "%";
+      } else {
+        document.getElementById("dashGoalsProgress").textContent = "0%";
+      }
+
+      // 2. Kun tartibi foizi
+      const scheduleKeys = Object.keys(schedule);
+      let schCompleted = 0;
+      scheduleKeys.forEach(k => { if (schedule[k].completed) schCompleted++; });
+      const schPercent = scheduleKeys.length ? Math.round((schCompleted / scheduleKeys.length) * 100) : 0;
+      document.getElementById("dashScheduleProgress").textContent = schPercent + "%";
+
+      // 3. Kitoblar soni
+      document.getElementById("dashBooksCount").textContent = books.length;
+
+      // 4. Asosiy maqsadlar mini ro'yxati (eng yaqin yillar)
+      const topList = document.getElementById("dashTopGoalsList");
+      topList.innerHTML = "";
+      const displayGoals = goals.slice(0, 3);
+      if (displayGoals.length === 0) {
+        topList.innerHTML = `<span style="font-size:0.85rem; color:var(--text-muted)">Maqsadlar mavjud emas.</span>`;
+      } else {
+        displayGoals.forEach(g => {
+          const row = document.createElement("div");
+          row.style.cssText = "display:flex; justify-content:space-between; align-items:center; background:rgba(255,255,255,0.03); padding:0.55rem 0.8rem; border-radius:8px;";
+          row.innerHTML = `
+            <div style="font-size:0.85rem; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:200px;">
+              ${escapeHtml(g.title)}
+            </div>
+            <div style="display:flex; align-items:center; gap:0.5rem;">
+              <span class="goal-year-badge" style="font-size:0.7rem; padding:1px 6px;">${g.year}</span>
+              <span style="font-size:0.8rem; font-weight:700; color:var(--neon-cyan);">${g.progress}%</span>
+            </div>
+          `;
+          topList.appendChild(row);
+        });
+      }
+    }
+
+    /* ======================================================================
+       EKSPORT & IMPORT (JSON Backup)
+       ====================================================================== */
+    function exportData() {
+      const fullData = {
+        goals,
+        schedule,
+        todos,
+        books,
+        exportedAt: new Date().toISOString()
+      };
+
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(fullData, null, 2));
+      const downloadAnchor = document.createElement("a");
+      downloadAnchor.setAttribute("href", dataStr);
+      downloadAnchor.setAttribute("download", `Hayot_Strategiyasi_Zaxira_${new Date().toISOString().slice(0, 10)}.json`);
+      document.body.appendChild(downloadAnchor);
+      downloadAnchor.click();
+      downloadAnchor.remove();
+
+      showToast("Barcha ma'lumotlar zaxirasi JSON fayl sifatida yuklandi! 💾");
+    }
+
+    function triggerImport() {
+      document.getElementById("importFileInput").click();
+    }
+
+    function importData(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          const parsed = JSON.parse(e.target.result);
+          if (parsed.goals && parsed.schedule) {
+            goals = parsed.goals;
+            schedule = parsed.schedule;
+            todos = parsed.todos || [];
+            books = parsed.books || [];
+
+            saveData("stratix_goals_v2", goals);
+            saveData("stratix_schedule_v2", schedule);
+            saveData("stratix_todos_v2", todos);
+            saveData("stratix_books_v2", books);
+
+            renderAll();
+            showToast("Ma'lumotlar muvaffaqiyatli tiklandi! ✅");
+          } else {
+            alert("Fayl formati noto'g'ri yoki yaroqsiz.");
+          }
+        } catch (err) {
+          alert("Faylni o'qishda xatolik yuz berdi: " + err.message);
+        }
+      };
+      reader.readAsText(file);
+      event.target.value = "";
+    }
+
+    /* ======================================================================
+       TOAST VA YORDAMCHI FUNKSIYALAR
+       ====================================================================== */
+    function showToast(message) {
+      const container = document.getElementById("toastContainer");
+      const toast = document.createElement("div");
+      toast.className = "toast";
+      toast.innerHTML = `
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--neon-cyan)" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+        <span>${escapeHtml(message)}</span>
+      `;
+      container.appendChild(toast);
+
+      setTimeout(() => {
+        toast.style.opacity = "0";
+        toast.style.transform = "translateX(50px)";
+        toast.style.transition = "all 0.3s ease";
+        setTimeout(() => toast.remove(), 300);
+      }, 3500);
+    }
+
+    function escapeHtml(str) {
+      if (!str) return "";
+      return str
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+  </script>
+</body>
+</html>
